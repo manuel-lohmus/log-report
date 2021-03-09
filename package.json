@@ -1,0 +1,24 @@
+{
+  "name": "log-report",
+  "version": "1.0.0",
+  "description": "log-report",
+  "main": "index.min.js",
+  "license": "MIT",
+  "bugs": {
+    "email": "manuel@hauss.ee"
+  },
+  "author": {
+    "name": "Manuel Lõhmus",
+    "email": "manuel@hauss.ee"
+  },
+  "scripts": {
+    "start": "node index.min.js"
+  },
+  "files": [
+    "index.js",
+    "package.json",
+    "README.md",
+    "README.html",
+    "LICENSE"
+  ]
+}
