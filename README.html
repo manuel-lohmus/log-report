@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>log-report: a Node.js Log Report library</title>
+</head>
+<body>
+
+    <h1 id="log-report-a-node.js-log-report-library">log-report: a Node.js Log Report library</h1>
+<p>'log-report' is a simple to use.
+Writes 'stdout' and 'stderr' to files:
+<em><code>./log/error.log</code>
+<code>./log/stderr.log</code>
+<code>./log/stdout.log</code></em></p>
+<h2 id="installing">Installing</h2>
+<p><code>npm install log-report</code></p>
+<h2 id="usage-example">Usage example</h2>
+<pre><code class="language-js">'use strict';
+
+//process.argv.push('logFileName=myLog_');
+var logReport = require('log-report');
+//logReport.logRelDir = '/my_log';
+
+//require('log-report');
+
+console.log('Log test.');
+console.warn('Warn test');
+console.error('Error test.');
+throw new Error('Throw Error: ...!');
+</code></pre>
+<h2 id="license">License</h2>
+<p><a href="LICENSE">MIT</a></p>
+<p>Copyright (c) 2021 Manuel Lõhmus <a href="mailto:manuel@hauss.ee">manuel@hauss.ee</a></p>
+
+
+</body>
+</html>

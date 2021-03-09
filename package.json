@@ -1,24 +1,30 @@
 {
   "name": "log-report",
-  "version": "1.0.0",
-  "description": "log-report",
+  "version": "1.0.1",
+  "description": "Writes 'stdout' and 'stderr' to files: `./log/error.log` `./log/stderr.log` `./log/stdout.log`",
   "main": "index.min.js",
   "license": "MIT",
   "bugs": {
     "email": "manuel@hauss.ee"
   },
-  "author": {
-    "name": "Manuel Lõhmus",
-    "email": "manuel@hauss.ee"
-  },
-  "scripts": {
-    "start": "node index.min.js"
-  },
+  "author": "Manuel Lõhmus <manuel@hauss.ee>",
   "files": [
     "index.js",
+    "index.min.js",
     "package.json",
     "README.md",
-    "README.html",
     "LICENSE"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuel-lohmus/log-report.git"
+  },
+  "keywords": [
+    "log",
+    "report",
+    "stdout",
+    "stderr",
+    "error"
+  ],
+  "homepage": "https://github.com/manuel-lohmus/log-report#readme"
 }

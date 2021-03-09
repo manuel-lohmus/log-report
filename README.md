@@ -10,7 +10,7 @@ Writes 'stdout' and 'stderr' to files:
 
 `npm install log-report`
 
-## Usage examples
+## Usage example
 
 ```js
 'use strict';
