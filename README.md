@@ -18,6 +18,7 @@ Writes 'stdout' and 'stderr' to files:
 //process.argv.push('logFileName=myLog_');
 var logReport = require('log-report');
 //logReport.logRelDir = '/my_log';
+logReport.clear();
 
 //require('log-report');
 

@@ -11,6 +11,19 @@ var argLogName = process.argv.find(function (i) { return i.includes('logFileName
 if (argLogName) { logName = argLogName.split('=')[1]; }
 
 
+function clear() {
+
+    function clearFile(fileName) {
+
+        fs.writeFileSync(logDailyName(fileName), '');
+    }
+
+    clearFile('stdout');
+    clearFile('stderr');
+    clearFile('error');
+}
+exports.clear = clear;
+
 //#region Log functions
 
 function logDailyName(prefix) {

@@ -1,7 +1,14 @@
 {
   "name": "log-report",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "Writes 'stdout' and 'stderr' to files: `./log/error.log` `./log/stderr.log` `./log/stdout.log`",
+  "keywords": [
+    "log",
+    "report",
+    "stdout",
+    "stderr",
+    "error"
+  ],
   "main": "index.min.js",
   "license": "MIT",
   "bugs": {
@@ -19,12 +26,5 @@
     "type": "git",
     "url": "git+https://github.com/manuel-lohmus/log-report.git"
   },
-  "keywords": [
-    "log",
-    "report",
-    "stdout",
-    "stderr",
-    "error"
-  ],
   "homepage": "https://github.com/manuel-lohmus/log-report#readme"
 }
