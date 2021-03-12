@@ -1,5 +1,8 @@
 # log-report: a Node.js Log Report library
 
+[![npm-version](https://badgen.net/npm/v/log-report)](https://www.npmjs.com/package/log-report)
+[![npm-total-downloads](https://badgen.net/npm/dw/log-report)](https://www.npmjs.com/package/log-report)
+
 'log-report' is a simple to use. 
 Writes 'stdout' and 'stderr' to files: 
 *`./log/error.log`
