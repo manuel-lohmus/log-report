@@ -6,6 +6,8 @@
 <body>
 
     <h1 id="log-report-a-node.js-log-report-library">log-report: a Node.js Log Report library</h1>
+<p><a href="https://www.npmjs.com/package/log-report"><img src="https://badgen.net/npm/v/log-report" alt="npm-version" /></a>
+<a href="https://www.npmjs.com/package/log-report"><img src="https://badgen.net/npm/dw/log-report" alt="npm-week-downloads" /></a></p>
 <p>'log-report' is a simple to use.
 Writes 'stdout' and 'stderr' to files:
 <em><code>./log/error.log</code>
@@ -19,13 +21,14 @@ Writes 'stdout' and 'stderr' to files:
 //process.argv.push('logFileName=myLog_');
 var logReport = require('log-report');
 //logReport.logRelDir = '/my_log';
+logReport.clear();
 
 //require('log-report');
 
 console.log('Log test.');
 console.warn('Warn test');
 console.error('Error test.');
-throw new Error('Throw Error: ...!');
+setTimeout(function () { throw new Error('Throw Error: ...!') }, 100);
 </code></pre>
 <h2 id="license">License</h2>
 <p><a href="LICENSE">MIT</a></p>

@@ -34,12 +34,15 @@ function logDailyName(prefix) {
 
     return path.resolve(dir, logName + prefix + '.log');
 }
-function writeToLogFile(prefix, originalMsg) {
+function writeToLogFile(prefix, originalMsg, isSync = false) {
 
     const timestamp = new Date().toLocaleString() + '  ';
     const fileName = logDailyName(prefix);
 
-    fs.appendFile(fileName, timestamp + originalMsg, { flag: 'a+' }, function (err) { if (err) { debugger; } });
+    if (isSync)
+        fs.appendFileSync(fileName, timestamp + originalMsg, { flag: 'a+' });
+    else
+        fs.appendFile(fileName, timestamp + originalMsg, { flag: 'a+' }, function (err) { if (err) { debugger; } });
 
     return originalMsg;
 }
@@ -67,7 +70,8 @@ process.stderr.write = function (args) {
 //uncaught exceptions
 process.on('uncaughtException', function (err) {
 
-    writeToLogFile('error', ((err && err.stack) ? err.stack : err) + '\n');
+    writeToLogFile('error', ((err && err.stack) ? err.stack : err) + '\n', true);
+    process.exit(1);
 });
 
 //#endregion
