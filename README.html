@@ -10,25 +10,20 @@
 <a href="https://www.npmjs.com/package/log-report"><img src="https://badgen.net/npm/dw/log-report" alt="npm-week-downloads" /></a></p>
 <p>'log-report' is a simple to use.
 Writes 'stdout' and 'stderr' to files:
-<em><code>./log/error.log</code>
-<code>./log/stderr.log</code>
-<code>./log/stdout.log</code></em></p>
+<em><code>error.log</code>
+<code>stderr.log</code>
+<code>stdout.log</code></em></p>
 <h2 id="installing">Installing</h2>
 <p><code>npm install log-report</code></p>
 <h2 id="usage-example">Usage example</h2>
-<pre><code class="language-js">'use strict';
-
-//process.argv.push('logFileName=myLog_');
-var logReport = require('log-report');
-//logReport.logRelDir = '/my_log';
+<pre><code class="language-js">//require('log-report').clear();
+var logReport = require('./index.min.js');
 logReport.clear();
-
-//require('log-report');
 
 console.log('Log test.');
 console.warn('Warn test');
 console.error('Error test.');
-setTimeout(function () { throw new Error('Throw Error: ...!') }, 100);
+setTimeout(function () { throw new Error('Throw Error: ...!'); }, 100);
 </code></pre>
 <h2 id="license">License</h2>
 <p><a href="LICENSE">MIT</a></p>

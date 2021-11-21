@@ -1,0 +1,12 @@
+{
+  "production": {
+    "isDebug": false,
+    "log_report": {
+      "logDir": "./log/log-report",
+      "enabled": true
+    }
+  },
+  "development": {
+    "isDebug": true
+  }
+}

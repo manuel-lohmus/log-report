@@ -5,9 +5,9 @@
 
 'log-report' is a simple to use. 
 Writes 'stdout' and 'stderr' to files: 
-*`./log/error.log`
-`./log/stderr.log`
-`./log/stdout.log`*
+*`error.log`
+`stderr.log`
+`stdout.log`*
 
 ## Installing
 
@@ -16,19 +16,14 @@ Writes 'stdout' and 'stderr' to files:
 ## Usage example
 
 ```js
-'use strict';
-
-//process.argv.push('logFileName=myLog_');
-var logReport = require('log-report');
-//logReport.logRelDir = '/my_log';
+//require('log-report').clear();
+var logReport = require('./index.min.js');
 logReport.clear();
-
-//require('log-report');
 
 console.log('Log test.');
 console.warn('Warn test');
 console.error('Error test.');
-setTimeout(function () { throw new Error('Throw Error: ...!') }, 100);
+setTimeout(function () { throw new Error('Throw Error: ...!'); }, 100);
 ```
 
 ## License
