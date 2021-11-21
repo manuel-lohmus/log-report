@@ -3,10 +3,17 @@
     "isDebug": false,
     "log_report": {
       "logDir": "./log/log-report",
-      "enabled": true
+      "enabled": true,
+      "save_only_uncaughtException": true,
+      "clear_on_startup": false
     }
   },
   "development": {
-    "isDebug": true
+    "isDebug": true,
+    "log_report": {
+      "enabled": true,
+      "save_only_uncaughtException": false,
+      "clear_on_startup": true
+    }
   }
 }

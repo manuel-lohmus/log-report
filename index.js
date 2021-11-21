@@ -1,9 +1,11 @@
-/**Log functions. @preserve Copyright (c) 2020 Manuel Lõhmus.*/
+/**Log functions. @preserve Copyright (c) 2021 Manuel Lõhmus.*/
 "use strict";
 
 var options = require("config-sets").init({
     log_report: {
         logDir: "./log/log-report",
+        clear_on_startup: true,
+        save_only_uncaughtException: true,
         enabled: true
     }
 }).log_report;
@@ -57,18 +59,20 @@ function checkSize() {
 function logDailyName(prefix) { return path.resolve(logDir, prefix + ".log"); }
 function writeToLogFile(prefix, originalMsg, isSync = false) {
 
-    checkSize();
+    if (options.enabled) {
 
-    const timestamp = new Date().toISOString() + "  ";
-    const fileName = logDailyName(prefix);
+        checkSize();
 
-    if (isSync)
-        try {
-            fs.appendFileSync(fileName, timestamp + originalMsg, { flag: "a+" });
-        } catch (err) { console.error(err); }
-    else
-        fs.appendFile(fileName, timestamp + originalMsg, { flag: "a+" }, function (err) { if (err) { console.error(err); } });
+        const timestamp = new Date().toISOString() + "  ";
+        const fileName = logDailyName(prefix);
 
+        if (isSync)
+            try {
+                fs.appendFileSync(fileName, timestamp + originalMsg, { flag: "a+" });
+            } catch (err) { console.error(err); }
+        else
+            fs.appendFile(fileName, timestamp + originalMsg, { flag: "a+" }, function (err) { if (err) { console.error(err); } });
+    }
     return originalMsg;
 }
 function clear() {
@@ -82,40 +86,43 @@ function clear() {
 }
 exports.clear = clear;
 
+if (options.clear_on_startup) { clear(); }
 
 
 
 //#region Log functions
 
-if (options.enabled) {
+if (!fs.existsSync(logDir)) { fs.mkdirSync(logDir, { recursive: true }); }
 
-    if (!fs.existsSync(logDir)) { fs.mkdirSync(logDir, { recursive: true }); }
+//stdout logging hook
+const stdoutWrite0 = process.stdout.write;
+process.stdout.write = function (args) {
 
-    //stdout logging hook
-    const stdoutWrite0 = process.stdout.write;
-    process.stdout.write = function (args) {
-
+    if (!options.save_only_uncaughtException) {
         writeToLogFile("stdout", args);
-        args = Array.isArray(args) ? args : [args];
+    }
+    args = Array.isArray(args) ? args : [args];
 
-        return stdoutWrite0.apply(process.stdout, args);
-    };
+    return stdoutWrite0.apply(process.stdout, args);
+};
 
-    //stderr logging hook
-    const stderrWrite0 = process.stderr.write;
-    process.stderr.write = function (args) {
+//stderr logging hook
+const stderrWrite0 = process.stderr.write;
+process.stderr.write = function (args) {
 
+    if (!options.save_only_uncaughtException) {
         writeToLogFile("stderr", args);
-        args = Array.isArray(args) ? args : [args];
+    }
+    args = Array.isArray(args) ? args : [args];
 
-        return stderrWrite0.apply(process.stderr, args);
-    };
+    return stderrWrite0.apply(process.stderr, args);
+};
 
-    //uncaught exceptions
-    process.on("uncaughtException", function (err) {
+//uncaught exceptions
+process.on("uncaughtException", function (err) {
 
-        writeToLogFile("error", ((err && err.stack) ? err.stack : err) + "\n", true);
-        process.exit(1);
-    });
-}
+    writeToLogFile("error", ((err && err.stack) ? err.stack : err) + "\n", true);
+    process.exit(1);
+});
+
 //#endregion

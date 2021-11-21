@@ -1,8 +1,13 @@
 'use strict';
 
-//require('log-report').clear();
-var logReport = require('./index.min.js');
-logReport.clear();
+/* longer version */
+//var logReport = require('log-report');
+//logReport.clear();
+
+/* short version */
+//require('log-report');
+
+require('./index.min.js');
 
 console.log('Log test.');
 console.warn('Warn test');

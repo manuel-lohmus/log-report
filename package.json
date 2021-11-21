@@ -1,6 +1,6 @@
 {
   "name": "log-report",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Writes 'stdout' and 'stderr' to files: `error.log` `stderr.log` `stdout.log`",
   "keywords": [
     "log",
@@ -15,9 +15,9 @@
   "files": [
     "index.js",
     "index.min.js",
+    "LICENSE",
     "package.json",
-    "README.md",
-    "LICENSE"
+    "README.md"
   ],
   "homepage": "https://github.com/manuel-lohmus/log-report#readme",
   "bugs": "https://github.com/manuel-lohmus/log-report/issues",

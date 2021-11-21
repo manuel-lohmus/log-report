@@ -16,14 +16,42 @@ Writes 'stdout' and 'stderr' to files:
 <h2 id="installing">Installing</h2>
 <p><code>npm install log-report</code></p>
 <h2 id="usage-example">Usage example</h2>
-<pre><code class="language-js">//require('log-report').clear();
-var logReport = require('./index.min.js');
-logReport.clear();
+<p>app.js</p>
+<pre><code class="language-js">/* longer version */
+//var logReport = require('log-report');
+//logReport.clear();
+
+/* short version */
+//require('log-report');
+
+require('./index.min.js');
 
 console.log('Log test.');
 console.warn('Warn test');
 console.error('Error test.');
 setTimeout(function () { throw new Error('Throw Error: ...!'); }, 100);
+</code></pre>
+<h2 id="config-sets-file">Config-sets file</h2>
+<p>config-sets.json <a href="https://github.com/manuel-lohmus/config-sets"><em>Read more...</em></a></p>
+<pre><code class="language-json">{
+  &quot;production&quot;: {
+    &quot;isDebug&quot;: false,
+    &quot;log_report&quot;: {
+      &quot;logDir&quot;: &quot;./log/log-report&quot;,
+      &quot;enabled&quot;: true,
+      &quot;save_only_uncaughtException&quot;: true,
+      &quot;clear_on_startup&quot;: false
+    }
+  },
+  &quot;development&quot;: {
+    &quot;isDebug&quot;: true,
+    &quot;log_report&quot;: {
+      &quot;enabled&quot;: true,
+      &quot;save_only_uncaughtException&quot;: false,
+      &quot;clear_on_startup&quot;: true
+    }
+  }
+}
 </code></pre>
 <h2 id="license">License</h2>
 <p><a href="LICENSE">MIT</a></p>
