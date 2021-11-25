@@ -30,6 +30,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="browser.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="config-sets.json" />
     <Content Include="index.js">
       <Publish>True</Publish>

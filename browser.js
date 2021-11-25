@@ -1,0 +1,1 @@
+throw new Error("'log-report' does not work in the browser.");
