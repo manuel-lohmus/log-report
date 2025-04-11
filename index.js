@@ -1,128 +1,129 @@
-/**Log functions. @preserve Copyright (c) 2021 Manuel Lõhmus.*/
-"use strict";
+/**  Copyright (c) 2021, Manuel Lõhmus (MIT License). */
 
-var options = require("config-sets").init({
-    log_report: {
+'use strict';
+
+var fs = require("fs"),
+    path = require("path"),
+    zlib = require("zlib"),
+    configSets = require("config-sets"),
+    options = configSets('log_report', {
         logDir: "./log/log-report",
+        stdoutFileName: "stdout.log",
+        stderrFileName: "stderr.log",
+        errorFileName: "error.log",
         clear_on_startup: true,
         save_only_uncaughtException: true,
+        silent: false,
         enabled: true
-    }
-}).log_report;
-
-var zlib = require("zlib");
-var fs = require("fs");
-var path = require("path");
-var logDir = path.resolve(options.logDir);
-var filenames = ["stdout", "stderr", "error"];
-
-var counter = 100;
-function checkSize() {
-
-    if (counter > 0) { counter--; return; }
-    counter = 100;
-
-    var filesSize = filenames
-        .map(function (filename) {
-
-            var pathName = path.resolve(logDir, logDailyName(filename));
-
-            if (fs.existsSync(pathName))
-                return fs.statSync(pathName).size;
-            else
-                return 0;
-        })
-        .reduce(function (accumulator, size) { return accumulator + size; }, 0);
-
-    if (filesSize > 262144) {
-
-        var sDate = new Date().toISOString().replace("T", " ").replace("Z", "").replaceAll(":", " ").split(".")[0];
-
-        filenames.forEach(function (filename) {
-
-            var oldPath = logDailyName(filename);
-            var newPath = logDailyName(sDate + " " + filename);
-
-            if (!fs.existsSync(oldPath)) return;
-
-            fs.renameSync(oldPath, newPath);
-
-            var fileContents = fs.createReadStream(newPath, { flag: "r+" });
-            var writeStream = fs.createWriteStream(newPath + ".gz", { flag: "w+" });
-            var zip = zlib.createGzip();
-            fileContents.pipe(zip).pipe(writeStream).on("finish", function () {
-                fs.unlink(newPath, function (err) { if (err) { console.error(err); } });
-            });
-        });
-    }
-}
-function logDailyName(prefix) { return path.resolve(logDir, prefix + ".log"); }
-function writeToLogFile(prefix, originalMsg, isSync = false) {
-
-    if (options.enabled) {
-
-        checkSize();
-
-        const timestamp = new Date().toISOString() + "  ";
-        const fileName = logDailyName(prefix);
-
-        if (isSync)
-            try {
-                fs.appendFileSync(fileName, timestamp + originalMsg, { flag: "a+" });
-            } catch (err) { console.error(err); }
-        else
-            fs.appendFile(fileName, timestamp + originalMsg, { flag: "a+" }, function (err) { if (err) { console.error(err); } });
-    }
-    return originalMsg;
-}
-function clear() {
-
-    if (options.enabled) {
-        filenames.forEach(function (fileName) {
-            if (fs.existsSync(logDailyName(fileName)))
-                fs.writeFileSync(logDailyName(fileName), "");
-        });
-    }
-}
-exports.clear = clear;
-
-if (options.clear_on_startup) { clear(); }
+    }),
+    logDir = path.resolve(options.logDir);
 
 
-
-//#region Log functions
-
-if (!fs.existsSync(logDir)) { fs.mkdirSync(logDir, { recursive: true }); }
-
-//stdout logging hook
-const stdoutWrite0 = process.stdout.write;
-process.stdout.write = function (args) {
-
-    if (!options.save_only_uncaughtException) {
-        writeToLogFile("stdout", args);
-    }
-    args = Array.isArray(args) ? args : [args];
-
-    return stdoutWrite0.apply(process.stdout, args);
-};
-
-//stderr logging hook
-const stderrWrite0 = process.stderr.write;
-process.stderr.write = function (args) {
-
-    if (!options.save_only_uncaughtException) {
-        writeToLogFile("stderr", args);
-    }
-    args = Array.isArray(args) ? args : [args];
-
-    return stderrWrite0.apply(process.stderr, args);
-};
-
-//uncaught exceptions
-process.on("uncaughtException", function (err) {
-
-    writeToLogFile("error", ((err && err.stack) ? err.stack : err) + "\n", true);
-    process.exit(1);
+Object.defineProperties(options, {
+    clearLogFiles: { value: clearLogFiles, writable: false, enumerable: false }
 });
 
-//#endregion
+module.exports = options;
+
+
+// Check if the log directory exists, if not create it
+if (!fs.existsSync(logDir)) { fs.mkdirSync(logDir, { recursive: true }); }
+
+// Check if the log files exist and remove them
+if (options.clear_on_startup) { clearLogFiles(); }
+
+// Redirect stdout and stderr to log files
+process.on("uncaughtException", function (err) {
+
+    writeToLogFile(options.errorFileName, (err.stack || err) + "\n", function () {
+
+        process.exit(1);
+    });
+});
+
+// If save_only_uncaughtException is true, do not log other errors
+if (options.save_only_uncaughtException) { return; }
+
+// Redirect stdout to log file
+process.stdout.write = (function (write) {
+
+    return function (chunk , encoding, callback) {
+
+        writeToLogFile(options.stdoutFileName, chunk);
+
+        if (options.silent) return true;
+
+        return write.apply(process.stdout, arguments);
+    };
+})(process.stdout.write);
+
+// Redirect stderr to log file
+process.stderr.write = (function (write) {
+    
+    return function (chunk , encoding, callback) {
+
+        writeToLogFile(options.stderrFileName, chunk);
+
+        if (options.silent) return true;
+
+        return write.apply(process.stderr, arguments);
+    };
+})(process.stderr.write);
+
+return;
+
+
+// Clear the log file
+function clearLogFiles() {
+
+    if (!options.enabled) { return; }
+
+    [options.stdoutFileName, options.stderrFileName, options.errorFileName]
+
+        .forEach(function (file) {
+
+            file = path.join(logDir, file);
+
+            if (!fs.existsSync(file)) { return; }
+
+            fs.unlinkSync(file);
+        });
+}
+// Append to the log file
+function writeToLogFile(logFile, logData, callback) {
+
+    if (!options.enabled) return;
+
+    logFile = path.join(logDir, logFile);
+
+    // Check if file is larger than 1MB and compress it
+    compressLogFile(logFile);
+
+    fs.appendFile(logFile, logData, function (err) {
+
+        if (err) { throw err; }
+
+        if (callback) { callback(); }
+    });
+}
+// Compress the log file if it exceeds 1MB
+function compressLogFile(logFilePath) {
+
+    var stats = fs.statSync(logFilePath, { throwIfNoEntry: false });
+
+    // Check if the file exists and is larger than 1MB
+    if (!stats || stats.size < 1024 * 1024) { return; }
+
+    var gzip = zlib.createGzip(),
+        timestamp = new Date().toISOString().replace(/:/g, "-").replace(/\..+/, ""),
+        archivedLogFilePath = logFilePath.replace(/\.log$/, "-" + timestamp + ".log")
+
+    // Rename the log file to include a timestamp
+    fs.renameSync(logFilePath, archivedLogFilePath);
+
+    // Compress the log file and delete the original
+    fs.createReadStream(archivedLogFilePath)
+        .pipe(gzip)
+        .pipe(fs.createWriteStream(archivedLogFilePath + ".gz"))
+        .on("finish", function () { fs.unlinkSync(archivedLogFilePath); });
+}

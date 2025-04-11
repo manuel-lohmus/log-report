@@ -1,62 +1,71 @@
-# log-report: a Node.js Log Report library
+<div class="row w-100">
+<div class="col-3 d-none d-lg-inline">
+<div class="sticky-top overflow-auto vh-100">
+<div id="list-headers" class="list-group mt-5">
 
-[![npm-version](https://badgen.net/npm/v/log-report)](https://www.npmjs.com/package/log-report)
-[![npm-week-downloads](https://badgen.net/npm/dw/log-report)](https://www.npmjs.com/package/log-report)
+[**Log Report**](#log-report)
+[**Config Sets**](#config-sets)
+[**Installation**](#installation)
+[**Basic Usage**](#basic-usage)
+[**License**](#license)
+    
+</div>
+</div>
+</div>
+ 
+<div class="col">
+<div class="p-2 markdown-body" data-bs-spy="scroll" data-bs-target="#list-headers" data-bs-offset="0" tabindex="0">
 
-'log-report' is a simple to use. 
-Writes 'stdout' and 'stderr' to files: 
-*`error.log`
-`stderr.log`
-`stdout.log`*
+# Log Report
+Log Report is a simple tool to generate a report of the logs in a directory. 
+It can be used to analyze the logs and find errors, warnings, and other important information.
+This is useful if the app runs in multiple threads.
+It is designed to be easy to use and customizable, allowing you to tailor the report to your needs.
 
-## Installing
+## Config Sets
+The config-sets are used to define the configuration for the log report.
+The configuration sets are defined in the `config-sets.json` file located in the root directory of the project.
+Config-sets allow you to modify settings dynamically in real time.  
+For instance, by setting `silent` to `true`, no terminal output will be displayed.
+See the [Config-Sets](https://manuel-lohmus.github.io/config-sets/README.html) section for more information on how to define the config sets.
 
-`npm install log-report`
-
-## Usage example
-app.js
-```js
-/* longer version */
-//var logReport = require('log-report');
-//logReport.clear();
-
-/* short version */
-//require('log-report');
-
-require('./index.min.js');
-
-console.log('Log test.');
-console.warn('Warn test');
-console.error('Error test.');
-setTimeout(function () { throw new Error('Throw Error: ...!'); }, 100);
+## Installation
+To install the Log Report, you can use the following command:
+```bash
+npm install log-report
 ```
 
-## Config-sets file
-config-sets.json [*Read more...*](https://github.com/manuel-lohmus/config-sets)
-```json
-{
-  "production": {
-    "isDebug": false,
-    "log_report": {
-      "logDir": "./log/log-report",
-      "enabled": true,
-      "save_only_uncaughtException": true,
-      "clear_on_startup": false
-    }
-  },
-  "development": {
-    "isDebug": true,
-    "log_report": {
-      "enabled": true,
-      "save_only_uncaughtException": false,
-      "clear_on_startup": true
-    }
-  }
-}
+## Basic Usage
+Short usage example:
+```javascript
+/* short version */
+require('log-report');
+// Importing the 'log-report' module will automatically execute it in the current thread, 
+// saving the generated information.
+```
+Longer example:
+```javascript
+/* longer version */
+const logReport = require('log-report');
+logReport.stdoutFileName = "stdout.log";
+logReport.stderrFileName = "stderr.log";
+logReport.errorFileName = "error.log";
+logReport.save_only_uncaughtException = false;
+logReport.silent = true;
+logReport.clearLogFiles();
 ```
 
 ## License
 
-[MIT](LICENSE)
+This project is licensed under the MIT License.
 
-Copyright (c) 2021 Manuel L&otilde;hmus <manuel@hauss.ee>
+Copyright &copy; 2025 Manuel Lõhmus
+
+
+
+<br>
+<br>
+<br>
+</div>
+</div>
+</div>

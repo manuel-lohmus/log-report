@@ -1,19 +1,16 @@
 {
+  "isProduction": true,
   "production": {
-    "isDebug": false,
     "log_report": {
       "logDir": "./log/log-report",
-      "enabled": true,
-      "save_only_uncaughtException": true,
-      "clear_on_startup": false
+      "stdoutFileName": "stdout.log",
+      "stderrFileName": "stderr.log",
+      "errorFileName": "error.log",
+      "clear_on_startup": false,
+      "save_only_uncaughtException": false,
+      "silent": false,
+      "enabled": true
     }
   },
-  "development": {
-    "isDebug": true,
-    "log_report": {
-      "enabled": true,
-      "save_only_uncaughtException": false,
-      "clear_on_startup": true
-    }
-  }
+  "development": {}
 }

@@ -1,33 +1,50 @@
 {
   "name": "log-report",
-  "version": "2.1.1",
-  "description": "Writes 'stdout' and 'stderr' to files: `error.log` `stderr.log` `stdout.log`",
+  "version": "3.0.0-beta.1",
+  "license": "MIT",
+  "author": "Manuel Lõhmus",
+  "description": "A simple and lightweight logging library for Node.js.",
   "keywords": [
     "log",
     "report",
     "stdout",
     "stderr",
-    "error"
+    "error",
+    "log-report",
+    "log-reporting",
+    "log-reporting-tool"
   ],
-  "main": "index.min.js",
   "browser": "browser.js",
-  "license": "MIT",
-  "author": "Manuel Lõhmus <manuel@hauss.ee>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "module": "wrapper.mjs",
+  "exports": {
+    ".": {
+      "browser": "./browser.js",
+      "import": "./wrapper.mjs",
+      "require": "./index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "browser.js",
     "index.js",
     "index.min.js",
     "LICENSE",
     "package.json",
-    "README.md"
+    "README.md",
+    "wrapper.mjs"
   ],
+  "dependencies": {
+    "config-sets": "^3.0.0-beta.10"
+  },
   "homepage": "https://github.com/manuel-lohmus/log-report#readme",
   "bugs": "https://github.com/manuel-lohmus/log-report/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/manuel-lohmus/log-report.git"
   },
-  "dependencies": {
-    "config-sets": "^2.0.0"
-  }
+  "funding": "https://manuel-lohmus.github.io/log-report/README.html#license"
 }

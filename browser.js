@@ -1,1 +1,1 @@
-throw new Error("'log-report' does not work in the browser.");
+throw new Error("`log-report` does not work in the browser.");
