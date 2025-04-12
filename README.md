@@ -22,6 +22,8 @@ It can be used to analyze the logs and find errors, warnings, and other importan
 This is useful if the app runs in multiple threads.
 It is designed to be easy to use and customizable, allowing you to tailor the report to your needs.
 
+This manual is also available in [HTML5](https://manuel-lohmus.github.io/log-report/README.html).
+
 ## Config Sets
 The config-sets are used to define the configuration for the log report.
 The configuration sets are defined in the `config-sets.json` file located in the root directory of the project.

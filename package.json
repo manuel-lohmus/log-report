@@ -45,6 +45,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/manuel-lohmus/log-report.git"
-  },
-  "funding": "https://manuel-lohmus.github.io/log-report/README.html#license"
+  }
 }

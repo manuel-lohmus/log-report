@@ -32,7 +32,7 @@ if (!fs.existsSync(logDir)) { fs.mkdirSync(logDir, { recursive: true }); }
 // Check if the log files exist and remove them
 if (options.clear_on_startup) { clearLogFiles(); }
 
-// Redirect stdout and stderr to log files
+// Redirect uncaught exception to log files
 process.on("uncaughtException", function (err) {
 
     writeToLogFile(options.errorFileName, (err.stack || err) + "\n", function () {
