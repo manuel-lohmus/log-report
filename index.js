@@ -94,29 +94,30 @@ function writeToLogFile(logFile, logData, callback) {
 
     if (!options.enabled) return;
 
-    logFile = path.join(logDir, logFile);
+    logFile = path.join(logDir, logFile)
 
     // Check if file is larger than 1MB and compress it
-    compressLogFile(logFile);
+    compressLogFile(logFile, function () {
 
-    fs.appendFile(logFile, logData, function (err) {
+        fs.appendFile(logFile, logData, function (err) {
 
-        if (err) { throw err; }
+            if (err) { throw err; }
 
-        if (callback) { callback(); }
+            if (callback) { callback(); }
+        });
     });
 }
 // Compress the log file if it exceeds 1MB
-function compressLogFile(logFilePath) {
+function compressLogFile(logFilePath, callback) {
 
     var stats = fs.statSync(logFilePath, { throwIfNoEntry: false });
 
     // Check if the file exists and is larger than 1MB
-    if (!stats || stats.size < 1024 * 1024) { return; }
+    if (!stats || stats.size < 1024 * 1024) { return callback(); }
 
     var gzip = zlib.createGzip(),
         timestamp = new Date().toISOString().replace(/:/g, "-").replace(/\..+/, ""),
-        archivedLogFilePath = logFilePath.replace(/\.log$/, "-" + timestamp + ".log")
+        archivedLogFilePath = logFilePath.replace(/\.log$/, "-" + timestamp + ".log");
 
     // Rename the log file to include a timestamp
     fs.renameSync(logFilePath, archivedLogFilePath);
@@ -125,5 +126,6 @@ function compressLogFile(logFilePath) {
     fs.createReadStream(archivedLogFilePath)
         .pipe(gzip)
         .pipe(fs.createWriteStream(archivedLogFilePath + ".gz"))
-        .on("finish", function () { fs.unlinkSync(archivedLogFilePath); });
+        .on('error', function (err) { if (err) { throw err; } })
+        .on("finish", function () { fs.unlinkSync(archivedLogFilePath); callback(); });
 }

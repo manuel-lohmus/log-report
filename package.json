@@ -1,6 +1,6 @@
 {
   "name": "log-report",
-  "version": "3.0.0-beta.1",
+  "version": "3.0.0-beta.2",
   "license": "MIT",
   "author": "Manuel Lõhmus",
   "description": "A simple and lightweight logging library for Node.js.",
@@ -31,7 +31,6 @@
   "files": [
     "browser.js",
     "index.js",
-    "index.min.js",
     "LICENSE",
     "package.json",
     "README.md",

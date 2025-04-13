@@ -1,20 +1,21 @@
 <div class="row w-100">
-<div class="col-3 d-none d-lg-inline">
-<div class="sticky-top overflow-auto vh-100">
-<div id="list-headers" class="list-group mt-5">
+<div class="col-lg-3 d-inline">
+<div class="sticky-top overflow-auto vh-lg-100">
+<div id="list-headers" class="list-group mt-3">
 
-[**Log Report**](#log-report)
-[**Config Sets**](#config-sets)
-[**Installation**](#installation)
-[**Basic Usage**](#basic-usage)
-[**License**](#license)
+#### &ensp;&ensp;&ensp;Table of contents
+- [**Log Report**](#log-report)
+- [**Config Sets**](#config-sets)
+- [**Installation**](#installation)
+- [**Basic Usage**](#basic-usage)
+- [**License**](#license)
     
 </div>
 </div>
 </div>
  
-<div class="col">
-<div class="p-2 markdown-body" data-bs-spy="scroll" data-bs-target="#list-headers" data-bs-offset="0" tabindex="0">
+<div class="col-lg-9 mt-2">
+<div class="ps-4 markdown-body" data-bs-spy="scroll" data-bs-target="#list-headers" data-bs-offset="0" tabindex="0">
 
 # Log Report
 Log Report is a simple tool to generate a report of the logs in a directory. 
