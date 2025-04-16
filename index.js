@@ -11,12 +11,15 @@ var fs = require("fs"),
         stdoutFileName: "stdout.log",
         stderrFileName: "stderr.log",
         errorFileName: "error.log",
-        clear_on_startup: true,
-        save_only_uncaughtException: true,
+        clearOnStartup: true,
+        saveOnlyUncaughtException: true,
+        addProcessTag: false,
+        addFileTag: false,
         silent: false,
         enabled: true
     }),
-    logDir = path.resolve(options.logDir);
+    logDir = path.resolve(options.logDir),
+    tag = calcTag();
 
 
 Object.defineProperties(options, {
@@ -25,24 +28,20 @@ Object.defineProperties(options, {
 
 module.exports = options;
 
-
 // Check if the log directory exists, if not create it
 if (!fs.existsSync(logDir)) { fs.mkdirSync(logDir, { recursive: true }); }
 
 // Check if the log files exist and remove them
-if (options.clear_on_startup) { clearLogFiles(); }
+if (options.clearOnStartup) { clearLogFiles(); }
 
 // Redirect uncaught exception to log files
-process.on("uncaughtException", function (err) {
+if (!process.listenerCount("uncaughtException", onUncaughtException)) {
 
-    writeToLogFile(options.errorFileName, (err.stack || err) + "\n", function () {
+    process.on("uncaughtException", onUncaughtException);
+}
 
-        process.exit(1);
-    });
-});
-
-// If save_only_uncaughtException is true, do not log other errors
-if (options.save_only_uncaughtException) { return; }
+// If saveOnlyUncaughtException is true, do not log other errors
+if (options.saveOnlyUncaughtException) { return; }
 
 // Redirect stdout to log file
 process.stdout.write = (function (write) {
@@ -73,6 +72,42 @@ process.stderr.write = (function (write) {
 return;
 
 
+function calcTag() {
+
+    var processTag = '';
+
+    if (options.addProcessTag) {
+
+        processTag = `[pid:${process.pid}`;
+
+        while (processTag.length < 11) { processTag += ' '; }
+    }
+
+    if (options.addFileTag) {
+
+        processTag += processTag ? ' ' : '[';
+
+        var fileTag = `${process.argv[1].substring(process.cwd().length + 1)}`;
+
+        if (fileTag.length > 11) { fileTag = fileTag.substring(0, 10) + '~'; }
+
+        while (fileTag.length < 11) { fileTag += ' '; }
+
+        processTag += fileTag;
+    }
+
+    if (processTag) { processTag += '] '; }
+
+    return processTag;
+}
+// Uncaught exception listener
+function onUncaughtException(err) {
+
+    writeToLogFile(options.errorFileName, (err.stack || err) + "\n", function () {
+
+        process.exit(1);
+    });
+}
 // Clear the log file
 function clearLogFiles() {
 
@@ -98,6 +133,8 @@ function writeToLogFile(logFile, logData, callback) {
 
     // Check if file is larger than 1MB and compress it
     compressLogFile(logFile, function () {
+
+        logData = tag + logData;
 
         fs.appendFile(logFile, logData, function (err) {
 

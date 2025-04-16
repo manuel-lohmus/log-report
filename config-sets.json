@@ -6,8 +6,10 @@
       "stdoutFileName": "stdout.log",
       "stderrFileName": "stderr.log",
       "errorFileName": "error.log",
-      "clear_on_startup": false,
-      "save_only_uncaughtException": false,
+      "clearOnStartup": false,
+      "saveOnlyUncaughtException": false,
+      "addProcessTag": true,
+      "addFileTag": true,
       "silent": false,
       "enabled": true
     }

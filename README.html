@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>   Table of contents</title>
+    <title>Table of contents</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" />
     <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>
@@ -10,23 +10,35 @@
     <style>
         #list-headers ul {
             list-style: none;
+            padding-left: .5em;
+        }
+        #list-headers > ul {
+            padding: 0;
+        }
+        #list-headers h1, h2, h3, h4, h5 {
+            white-space: nowrap;
         }
         .markdown-body {
             padding-left: 2em;
+        }
+        @media (min-width: 992px) {
+            .vh-lg-100{
+                height: 100vh !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="row w-100">
-<div class="col-lg-3 d-inline">
+<div class="col-lg-3 d-lg-inline">
 <div class="sticky-top overflow-auto vh-lg-100">
-<div id="list-headers" class="list-group mt-3">
-<h4 id="table-of-contents">   Table of contents</h4>
+<div id="list-headers" class="list-group mt-2 ms-lg-2 ms-4">
+<h4 id="table-of-contents">Table of contents</h4>
 <ul>
 <li><a href="#log-report"><strong>Log Report</strong></a></li>
-<li><a href="#config-sets"><strong>Config Sets</strong></a></li>
 <li><a href="#installation"><strong>Installation</strong></a></li>
 <li><a href="#basic-usage"><strong>Basic Usage</strong></a></li>
+<li><a href="#config-sets"><strong>Config Sets</strong></a></li>
 <li><a href="#license"><strong>License</strong></a></li>
 </ul>
 </div>
@@ -36,17 +48,10 @@
 <div class="col-lg-9 mt-2">
 <div class="ps-4 markdown-body" data-bs-spy="scroll" data-bs-target="#list-headers" data-bs-offset="0" tabindex="0">
 <h1 id="log-report">Log Report</h1>
-<p>Log Report is a simple tool to generate a report of the logs in a directory.
-It can be used to analyze the logs and find errors, warnings, and other important information.
-This is useful if the app runs in multiple threads.
-It is designed to be easy to use and customizable, allowing you to tailor the report to your needs.</p>
+<p>Log Report is a powerful yet simple tool designed to generate comprehensive reports of logs in a directory.<br />
+It helps analyze logs to identify errors, warnings, and other critical information, making it especially useful for applications running in multiple threads.<br />
+The tool is highly customizable, allowing you to tailor reports to your specific needs with ease.</p>
 <p>This manual is also available in <a href="https://manuel-lohmus.github.io/log-report/README.html">HTML5</a>.</p>
-<h2 id="config-sets">Config Sets</h2>
-<p>The config-sets are used to define the configuration for the log report.
-The configuration sets are defined in the <code>config-sets.json</code> file located in the root directory of the project.
-Config-sets allow you to modify settings dynamically in real time.<br />
-For instance, by setting <code>silent</code> to <code>true</code>, no terminal output will be displayed.
-See the <a href="https://manuel-lohmus.github.io/config-sets/README.html">Config-Sets</a> section for more information on how to define the config sets.</p>
 <h2 id="installation">Installation</h2>
 <p>To install the Log Report, you can use the following command:</p>
 <pre><code class="language-bash">npm install log-report
@@ -61,12 +66,47 @@ require('log-report');
 <p>Longer example:</p>
 <pre><code class="language-javascript">/* longer version */
 const logReport = require('log-report');
+// Specifies the directory where logs will be saved.
+logReport.logDir = &quot;./log/log-report&quot;;
+// Specify appropriate log file names.
 logReport.stdoutFileName = &quot;stdout.log&quot;;
 logReport.stderrFileName = &quot;stderr.log&quot;;
 logReport.errorFileName = &quot;error.log&quot;;
-logReport.save_only_uncaughtException = false;
+// This is useful if you want to start with fresh log files, especially during development or testing.
+logReport.clearOnStartup = false;
+// This is useful if you only want information about Uncaught Exception.
+logReport.saveOnlyUncaughtException = false;
+// This is useful if you want to get information about the PID of a process, especially during development or testing.
+logReport.addProcessTag = false;
+// This is useful if you want to get information about the file that started the process, especially during development or testing.
+logReport.addFileTag = false;
+// Suppresses terminal output when set to true.
 logReport.silent = true;
+// This is useful if you want to start with fresh log files, especially during development or testing.
 logReport.clearLogFiles();
+</code></pre>
+<h2 id="config-sets">Config Sets</h2>
+<p>Config sets define the configuration for the log report and are located in the <code>config-sets.json</code> file in the root directory of the project.<br />
+They enable dynamic, real-time modification of settings. For example, setting <code>silent</code> to <code>true</code> suppresses terminal output.<br />
+Refer to the <a href="https://manuel-lohmus.github.io/config-sets/README.html">Config-Sets</a> section for detailed instructions on defining and using config sets.</p>
+<pre><code class="language-json">{
+  &quot;isProduction&quot;: true,
+  &quot;production&quot;: {
+    &quot;log_report&quot;: {
+      &quot;logDir&quot;: &quot;./log/log-report&quot;,
+      &quot;stdoutFileName&quot;: &quot;stdout.log&quot;,
+      &quot;stderrFileName&quot;: &quot;stderr.log&quot;,
+      &quot;errorFileName&quot;: &quot;error.log&quot;,
+      &quot;clearOnStartup&quot;: true,
+      &quot;saveOnlyUncaughtException&quot;: true,
+      &quot;addProcessTag&quot;: false,
+      &quot;addFileTag&quot;: false,
+      &quot;silent&quot;: false,
+      &quot;enabled&quot;: true
+    }
+  },
+  &quot;development&quot;: {}
+}
 </code></pre>
 <h2 id="license">License</h2>
 <p>This project is licensed under the MIT License.</p>
@@ -86,8 +126,6 @@ logReport.clearLogFiles();
             var isIE = !!document.documentMode; // Detect IE
 
             if (!isIE) {
-
-                var link, script;
 
                 // list-group style for headers
                 document.querySelectorAll('#list-headers a')

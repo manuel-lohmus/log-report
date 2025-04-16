@@ -1,13 +1,14 @@
-<div class="row w-100">
-<div class="col-lg-3 d-inline">
-<div class="sticky-top overflow-auto vh-lg-100">
-<div id="list-headers" class="list-group mt-3">
 
-#### &ensp;&ensp;&ensp;Table of contents
+<div class="row w-100">
+<div class="col-lg-3 d-lg-inline">
+<div class="sticky-top overflow-auto vh-lg-100">
+<div id="list-headers" class="list-group mt-2 ms-lg-2 ms-4">
+
+#### Table of contents
 - [**Log Report**](#log-report)
-- [**Config Sets**](#config-sets)
 - [**Installation**](#installation)
 - [**Basic Usage**](#basic-usage)
+- [**Config Sets**](#config-sets)
 - [**License**](#license)
     
 </div>
@@ -18,19 +19,11 @@
 <div class="ps-4 markdown-body" data-bs-spy="scroll" data-bs-target="#list-headers" data-bs-offset="0" tabindex="0">
 
 # Log Report
-Log Report is a simple tool to generate a report of the logs in a directory. 
-It can be used to analyze the logs and find errors, warnings, and other important information.
-This is useful if the app runs in multiple threads.
-It is designed to be easy to use and customizable, allowing you to tailor the report to your needs.
+Log Report is a powerful yet simple tool designed to generate comprehensive reports of logs in a directory.  
+It helps analyze logs to identify errors, warnings, and other critical information, making it especially useful for applications running in multiple threads.  
+The tool is highly customizable, allowing you to tailor reports to your specific needs with ease.
 
 This manual is also available in [HTML5](https://manuel-lohmus.github.io/log-report/README.html).
-
-## Config Sets
-The config-sets are used to define the configuration for the log report.
-The configuration sets are defined in the `config-sets.json` file located in the root directory of the project.
-Config-sets allow you to modify settings dynamically in real time.  
-For instance, by setting `silent` to `true`, no terminal output will be displayed.
-See the [Config-Sets](https://manuel-lohmus.github.io/config-sets/README.html) section for more information on how to define the config sets.
 
 ## Installation
 To install the Log Report, you can use the following command:
@@ -50,13 +43,51 @@ Longer example:
 ```javascript
 /* longer version */
 const logReport = require('log-report');
+// Specifies the directory where logs will be saved.
+logReport.logDir = "./log/log-report";
+// Specify appropriate log file names.
 logReport.stdoutFileName = "stdout.log";
 logReport.stderrFileName = "stderr.log";
 logReport.errorFileName = "error.log";
-logReport.save_only_uncaughtException = false;
+// This is useful if you want to start with fresh log files, especially during development or testing.
+logReport.clearOnStartup = false;
+// This is useful if you only want information about Uncaught Exception.
+logReport.saveOnlyUncaughtException = false;
+// This is useful if you want to get information about the PID of a process, especially during development or testing.
+logReport.addProcessTag = false;
+// This is useful if you want to get information about the file that started the process, especially during development or testing.
+logReport.addFileTag = false;
+// Suppresses terminal output when set to true.
 logReport.silent = true;
+// This is useful if you want to start with fresh log files, especially during development or testing.
 logReport.clearLogFiles();
 ```
+
+## Config Sets
+Config sets define the configuration for the log report and are located in the `config-sets.json` file in the root directory of the project.  
+They enable dynamic, real-time modification of settings. For example, setting `silent` to `true` suppresses terminal output.  
+Refer to the [Config-Sets](https://manuel-lohmus.github.io/config-sets/README.html) section for detailed instructions on defining and using config sets.
+```json
+{
+  "isProduction": true,
+  "production": {
+    "log_report": {
+      "logDir": "./log/log-report",
+      "stdoutFileName": "stdout.log",
+      "stderrFileName": "stderr.log",
+      "errorFileName": "error.log",
+      "clearOnStartup": true,
+      "saveOnlyUncaughtException": true,
+      "addProcessTag": false,
+      "addFileTag": false,
+      "silent": false,
+      "enabled": true
+    }
+  },
+  "development": {}
+}
+```
+
 
 ## License
 

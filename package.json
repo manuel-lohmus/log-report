@@ -1,9 +1,9 @@
 {
   "name": "log-report",
-  "version": "3.0.0-beta.2",
+  "version": "3.0.0-beta.3",
   "license": "MIT",
   "author": "Manuel Lõhmus",
-  "description": "A simple and lightweight logging library for Node.js.",
+  "description": "A lightweight and efficient logging library for Node.js, designed for simplicity and flexibility.",
   "keywords": [
     "log",
     "report",
