@@ -1,10 +1,11 @@
 {
   "name": "log-report",
-  "version": "3.0.0-beta.3",
+  "version": "3.0.0-rc.1",
   "license": "MIT",
   "author": "Manuel Lõhmus",
   "description": "A lightweight and efficient logging library for Node.js, designed for simplicity and flexibility.",
   "keywords": [
+    "conextra",
     "log",
     "report",
     "stdout",
@@ -37,7 +38,7 @@
     "wrapper.mjs"
   ],
   "dependencies": {
-    "config-sets": "^3.0.0-beta.10"
+    "config-sets": "^3.0.0-rc.1"
   },
   "homepage": "https://github.com/manuel-lohmus/log-report#readme",
   "bugs": "https://github.com/manuel-lohmus/log-report/issues",

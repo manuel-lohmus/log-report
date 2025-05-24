@@ -1,4 +1,4 @@
-/**  Copyright (c) 2021, Manuel Lõhmus (MIT License). */
+/**  Copyright (c) Manuel Lõhmus (MIT License). */
 
 'use strict';
 

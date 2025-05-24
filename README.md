@@ -1,11 +1,19 @@
+<div class="row w-100">
+<div class="col-12 text-center">
 
+# Log Report
+A lightweight and efficient logging library for Node.js, designed for simplicity and flexibility.<br>
+This manual is also available in [HTML5](https://manuel-lohmus.github.io/log-report/README.html).
+
+</div>
+</div> 
 <div class="row w-100">
 <div class="col-lg-3 d-lg-inline">
 <div class="sticky-top overflow-auto vh-lg-100">
 <div id="list-headers" class="list-group mt-2 ms-lg-2 ms-4">
 
 #### Table of contents
-- [**Log Report**](#log-report)
+- [**Introduction**](#introduction)
 - [**Installation**](#installation)
 - [**Basic Usage**](#basic-usage)
 - [**Config Sets**](#config-sets)
@@ -18,12 +26,13 @@
 <div class="col-lg-9 mt-2">
 <div class="ps-4 markdown-body" data-bs-spy="scroll" data-bs-target="#list-headers" data-bs-offset="0" tabindex="0">
 
-# Log Report
+## Introduction
 Log Report is a powerful yet simple tool designed to generate comprehensive reports of logs in a directory.  
 It helps analyze logs to identify errors, warnings, and other critical information, making it especially useful for applications running in multiple threads.  
 The tool is highly customizable, allowing you to tailor reports to your specific needs with ease.
-
-This manual is also available in [HTML5](https://manuel-lohmus.github.io/log-report/README.html).
+This module is part of the ['conextra'](https://www.npmjs.com/package/conextra) framework,
+which is a simple and easy-to-use single-page application (SPA) framework.
+You have to try it! A different solution than MVC (model–view–controller).
 
 ## Installation
 To install the Log Report, you can use the following command:
@@ -93,7 +102,7 @@ Refer to the [Config-Sets](https://manuel-lohmus.github.io/config-sets/README.ht
 
 This project is licensed under the MIT License.
 
-Copyright &copy; 2025 Manuel Lõhmus
+Copyright &copy; Manuel Lõhmus
 
 
 
