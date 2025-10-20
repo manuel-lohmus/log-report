@@ -342,3 +342,7 @@ healthchecksdb
 *.esproj
 /.gitignore
 /.gitattributes
+/To-Do.md
+/logs/rotate-demo
+/logo/logo.png
+/logo/logo.svg
