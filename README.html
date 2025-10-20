@@ -1,146 +1,2703 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-    <title>Log Report</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" />
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" />
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>README</title>
     <style>
-        #list-headers ul {
-            list-style: none;
-            padding-left: .5em;
+        :root {
+            --markdown-font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif;
+            --markdown-font-size: 14px;
+            --markdown-line-height: 1.6;
+            --vscode-font-family: "Segoe WPC", "Segoe UI", sans-serif;
+            --vscode-font-weight: normal;
+            --vscode-font-size: 13px;
+            --vscode-editor-font-family: Consolas, "Courier New", monospace;
+            --vscode-editor-font-weight: normal;
+            --vscode-editor-font-size: 14px;
+            --vscode-foreground: #616161;
+            --vscode-errorForeground: #a1260d;
+            --vscode-descriptionForeground: #717171;
+            --vscode-icon-foreground: #424242;
+            --vscode-focusBorder: #0090f1;
+            --vscode-textSeparator-foreground: rgba(0, 0, 0, 0.18);
+            --vscode-textLink-foreground: #006ab1;
+            --vscode-textLink-activeForeground: #006ab1;
+            --vscode-textPreformat-foreground: #a31515;
+            --vscode-textBlockQuote-background: rgba(127, 127, 127, 0.1);
+            --vscode-textBlockQuote-border: rgba(0, 122, 204, 0.5);
+            --vscode-textCodeBlock-background: rgba(220, 220, 220, 0.4);
+            --vscode-widget-shadow: #a8a8a8;
+            --vscode-input-background: #ffffff;
+            --vscode-input-foreground: #616161;
+            --vscode-inputOption-activeBorder: rgba(0, 122, 204, 0);
+            --vscode-inputOption-activeBackground: rgba(0, 144, 241, 0.2);
+            --vscode-inputOption-activeForeground: #000000;
+            --vscode-input-placeholderForeground: #767676;
+            --vscode-inputValidation-infoBackground: #d6ecf2;
+            --vscode-inputValidation-infoBorder: #007acc;
+            --vscode-inputValidation-warningBackground: #f6f5d2;
+            --vscode-inputValidation-warningBorder: #b89500;
+            --vscode-inputValidation-errorBackground: #f2dede;
+            --vscode-inputValidation-errorBorder: #be1100;
+            --vscode-dropdown-background: #ffffff;
+            --vscode-dropdown-border: #cecece;
+            --vscode-checkbox-background: #ffffff;
+            --vscode-checkbox-border: #cecece;
+            --vscode-button-foreground: #ffffff;
+            --vscode-button-background: #007acc;
+            --vscode-button-hoverBackground: #0062a3;
+            --vscode-button-secondaryForeground: #ffffff;
+            --vscode-button-secondaryBackground: #5f6a79;
+            --vscode-button-secondaryHoverBackground: #4c5561;
+            --vscode-badge-background: #c4c4c4;
+            --vscode-badge-foreground: #333333;
+            --vscode-scrollbar-shadow: #dddddd;
+            --vscode-scrollbarSlider-background: rgba(100, 100, 100, 0.4);
+            --vscode-scrollbarSlider-hoverBackground: rgba(100, 100, 100, 0.7);
+            --vscode-scrollbarSlider-activeBackground: rgba(0, 0, 0, 0.6);
+            --vscode-progressBar-background: #0e70c0;
+            --vscode-editorError-foreground: #e51400;
+            --vscode-editorWarning-foreground: #e9a700;
+            --vscode-editorInfo-foreground: #75beff;
+            --vscode-editorHint-foreground: #6c6c6c;
+            --vscode-editor-background: #ffffff;
+            --vscode-editor-foreground: #000000;
+            --vscode-editorWidget-background: #f3f3f3;
+            --vscode-editorWidget-foreground: #616161;
+            --vscode-editorWidget-border: #c8c8c8;
+            --vscode-quickInput-background: #f3f3f3;
+            --vscode-quickInput-foreground: #616161;
+            --vscode-quickInputTitle-background: rgba(0, 0, 0, 0.06);
+            --vscode-pickerGroup-foreground: #0066bf;
+            --vscode-pickerGroup-border: #cccedb;
+            --vscode-editor-selectionBackground: #add6ff;
+            --vscode-editor-inactiveSelectionBackground: #e5ebf1;
+            --vscode-editor-selectionHighlightBackground: rgba(173, 214, 255, 0.5);
+            --vscode-editor-findMatchBackground: #a8ac94;
+            --vscode-editor-findMatchHighlightBackground: rgba(234, 92, 0, 0.33);
+            --vscode-editor-findRangeHighlightBackground: rgba(180, 180, 180, 0.3);
+            --vscode-searchEditor-findMatchBackground: rgba(234, 92, 0, 0.22);
+            --vscode-editor-hoverHighlightBackground: rgba(173, 214, 255, 0.15);
+            --vscode-editorHoverWidget-background: #f3f3f3;
+            --vscode-editorHoverWidget-foreground: #616161;
+            --vscode-editorHoverWidget-border: #c8c8c8;
+            --vscode-editorHoverWidget-statusBarBackground: #e7e7e7;
+            --vscode-editorLink-activeForeground: #0000ff;
+            --vscode-editorLightBulb-foreground: #ddb100;
+            --vscode-editorLightBulbAutoFix-foreground: #007acc;
+            --vscode-diffEditor-insertedTextBackground: rgba(155, 185, 85, 0.2);
+            --vscode-diffEditor-removedTextBackground: rgba(255, 0, 0, 0.2);
+            --vscode-diffEditor-diagonalFill: rgba(34, 34, 34, 0.2);
+            --vscode-list-focusBackground: #d6ebff;
+            --vscode-list-activeSelectionBackground: #0074e8;
+            --vscode-list-activeSelectionForeground: #ffffff;
+            --vscode-list-inactiveSelectionBackground: #e4e6f1;
+            --vscode-list-hoverBackground: #e8e8e8;
+            --vscode-list-dropBackground: #d6ebff;
+            --vscode-list-highlightForeground: #0066bf;
+            --vscode-list-invalidItemForeground: #b89500;
+            --vscode-list-errorForeground: #b01011;
+            --vscode-list-warningForeground: #855f00;
+            --vscode-listFilterWidget-background: #efc1ad;
+            --vscode-listFilterWidget-outline: rgba(0, 0, 0, 0);
+            --vscode-listFilterWidget-noMatchesOutline: #be1100;
+            --vscode-list-filterMatchBackground: rgba(234, 92, 0, 0.33);
+            --vscode-tree-indentGuidesStroke: #a9a9a9;
+            --vscode-list-deemphasizedForeground: #8e8e90;
+            --vscode-menu-foreground: #616161;
+            --vscode-menu-background: #ffffff;
+            --vscode-menu-selectionForeground: #ffffff;
+            --vscode-menu-selectionBackground: #0074e8;
+            --vscode-menu-separatorBackground: #888888;
+            --vscode-editor-snippetTabstopHighlightBackground: rgba(10, 50, 100, 0.2);
+            --vscode-editor-snippetFinalTabstopHighlightBorder: rgba(10, 50, 100, 0.5);
+            --vscode-breadcrumb-foreground: rgba(97, 97, 97, 0.8);
+            --vscode-breadcrumb-background: #ffffff;
+            --vscode-breadcrumb-focusForeground: #4e4e4e;
+            --vscode-breadcrumb-activeSelectionForeground: #4e4e4e;
+            --vscode-breadcrumbPicker-background: #f3f3f3;
+            --vscode-merge-currentHeaderBackground: rgba(64, 200, 174, 0.5);
+            --vscode-merge-currentContentBackground: rgba(64, 200, 174, 0.2);
+            --vscode-merge-incomingHeaderBackground: rgba(64, 166, 255, 0.5);
+            --vscode-merge-incomingContentBackground: rgba(64, 166, 255, 0.2);
+            --vscode-merge-commonHeaderBackground: rgba(96, 96, 96, 0.4);
+            --vscode-merge-commonContentBackground: rgba(96, 96, 96, 0.16);
+            --vscode-editorOverviewRuler-currentContentForeground: rgba(64, 200, 174, 0.5);
+            --vscode-editorOverviewRuler-incomingContentForeground: rgba(64, 166, 255, 0.5);
+            --vscode-editorOverviewRuler-commonContentForeground: rgba(96, 96, 96, 0.4);
+            --vscode-editorOverviewRuler-findMatchForeground: rgba(209, 134, 22, 0.49);
+            --vscode-editorOverviewRuler-selectionHighlightForeground: rgba(160, 160, 160, 0.8);
+            --vscode-minimap-findMatchHighlight: #d18616;
+            --vscode-minimap-selectionHighlight: #add6ff;
+            --vscode-minimap-errorHighlight: rgba(255, 18, 18, 0.7);
+            --vscode-minimap-warningHighlight: #e9a700;
+            --vscode-minimapSlider-background: rgba(100, 100, 100, 0.2);
+            --vscode-minimapSlider-hoverBackground: rgba(100, 100, 100, 0.35);
+            --vscode-minimapSlider-activeBackground: rgba(0, 0, 0, 0.3);
+            --vscode-problemsErrorIcon-foreground: #e51400;
+            --vscode-problemsWarningIcon-foreground: #e9a700;
+            --vscode-problemsInfoIcon-foreground: #75beff;
+            --vscode-editor-lineHighlightBorder: #eeeeee;
+            --vscode-editor-rangeHighlightBackground: rgba(253, 255, 0, 0.2);
+            --vscode-editor-symbolHighlightBackground: rgba(234, 92, 0, 0.33);
+            --vscode-editorCursor-foreground: #000000;
+            --vscode-editorWhitespace-foreground: rgba(51, 51, 51, 0.2);
+            --vscode-editorIndentGuide-background: #d3d3d3;
+            --vscode-editorIndentGuide-activeBackground: #939393;
+            --vscode-editorLineNumber-foreground: #237893;
+            --vscode-editorActiveLineNumber-foreground: #0b216f;
+            --vscode-editorLineNumber-activeForeground: #0b216f;
+            --vscode-editorRuler-foreground: #d3d3d3;
+            --vscode-editorCodeLens-foreground: #999999;
+            --vscode-editorBracketMatch-background: rgba(0, 100, 0, 0.1);
+            --vscode-editorBracketMatch-border: #b9b9b9;
+            --vscode-editorOverviewRuler-border: rgba(127, 127, 127, 0.3);
+            --vscode-editorGutter-background: #ffffff;
+            --vscode-editorUnnecessaryCode-opacity: rgba(0, 0, 0, 0.47);
+            --vscode-editorOverviewRuler-rangeHighlightForeground: rgba(0, 122, 204, 0.6);
+            --vscode-editorOverviewRuler-errorForeground: rgba(255, 18, 18, 0.7);
+            --vscode-editorOverviewRuler-warningForeground: #e9a700;
+            --vscode-editorOverviewRuler-infoForeground: #75beff;
+            --vscode-editorOverviewRuler-bracketMatchForeground: #a0a0a0;
+            --vscode-symbolIcon-arrayForeground: #616161;
+            --vscode-symbolIcon-booleanForeground: #616161;
+            --vscode-symbolIcon-classForeground: #d67e00;
+            --vscode-symbolIcon-colorForeground: #616161;
+            --vscode-symbolIcon-constantForeground: #616161;
+            --vscode-symbolIcon-constructorForeground: #652d90;
+            --vscode-symbolIcon-enumeratorForeground: #d67e00;
+            --vscode-symbolIcon-enumeratorMemberForeground: #007acc;
+            --vscode-symbolIcon-eventForeground: #d67e00;
+            --vscode-symbolIcon-fieldForeground: #007acc;
+            --vscode-symbolIcon-fileForeground: #616161;
+            --vscode-symbolIcon-folderForeground: #616161;
+            --vscode-symbolIcon-functionForeground: #652d90;
+            --vscode-symbolIcon-interfaceForeground: #007acc;
+            --vscode-symbolIcon-keyForeground: #616161;
+            --vscode-symbolIcon-keywordForeground: #616161;
+            --vscode-symbolIcon-methodForeground: #652d90;
+            --vscode-symbolIcon-moduleForeground: #616161;
+            --vscode-symbolIcon-namespaceForeground: #616161;
+            --vscode-symbolIcon-nullForeground: #616161;
+            --vscode-symbolIcon-numberForeground: #616161;
+            --vscode-symbolIcon-objectForeground: #616161;
+            --vscode-symbolIcon-operatorForeground: #616161;
+            --vscode-symbolIcon-packageForeground: #616161;
+            --vscode-symbolIcon-propertyForeground: #616161;
+            --vscode-symbolIcon-referenceForeground: #616161;
+            --vscode-symbolIcon-snippetForeground: #616161;
+            --vscode-symbolIcon-stringForeground: #616161;
+            --vscode-symbolIcon-structForeground: #616161;
+            --vscode-symbolIcon-textForeground: #616161;
+            --vscode-symbolIcon-typeParameterForeground: #616161;
+            --vscode-symbolIcon-unitForeground: #616161;
+            --vscode-symbolIcon-variableForeground: #007acc;
+            --vscode-editor-foldBackground: rgba(173, 214, 255, 0.3);
+            --vscode-editorGutter-foldingControlForeground: #424242;
+            --vscode-editor-onTypeRenameBackground: rgba(255, 0, 0, 0.3);
+            --vscode-editorSuggestWidget-background: #f3f3f3;
+            --vscode-editorSuggestWidget-border: #c8c8c8;
+            --vscode-editorSuggestWidget-foreground: #000000;
+            --vscode-editorSuggestWidget-selectedBackground: #d6ebff;
+            --vscode-editorSuggestWidget-highlightForeground: #0066bf;
+            --vscode-editor-wordHighlightBackground: rgba(87, 87, 87, 0.25);
+            --vscode-editor-wordHighlightStrongBackground: rgba(14, 99, 156, 0.25);
+            --vscode-editorOverviewRuler-wordHighlightForeground: rgba(160, 160, 160, 0.8);
+            --vscode-editorOverviewRuler-wordHighlightStrongForeground: rgba(192, 160, 192, 0.8);
+            --vscode-peekViewTitle-background: #ffffff;
+            --vscode-peekViewTitleLabel-foreground: #333333;
+            --vscode-peekViewTitleDescription-foreground: rgba(97, 97, 97, 0.9);
+            --vscode-peekView-border: #007acc;
+            --vscode-peekViewResult-background: #f3f3f3;
+            --vscode-peekViewResult-lineForeground: #646465;
+            --vscode-peekViewResult-fileForeground: #1e1e1e;
+            --vscode-peekViewResult-selectionBackground: rgba(51, 153, 255, 0.2);
+            --vscode-peekViewResult-selectionForeground: #6c6c6c;
+            --vscode-peekViewEditor-background: #f2f8fc;
+            --vscode-peekViewEditorGutter-background: #f2f8fc;
+            --vscode-peekViewResult-matchHighlightBackground: rgba(234, 92, 0, 0.3);
+            --vscode-peekViewEditor-matchHighlightBackground: rgba(245, 216, 2, 0.87);
+            --vscode-editorMarkerNavigationError-background: #e51400;
+            --vscode-editorMarkerNavigationWarning-background: #e9a700;
+            --vscode-editorMarkerNavigationInfo-background: #75beff;
+            --vscode-editorMarkerNavigation-background: #ffffff;
+            --vscode-tab-activeBackground: #ffffff;
+            --vscode-tab-unfocusedActiveBackground: #ffffff;
+            --vscode-tab-inactiveBackground: #ececec;
+            --vscode-tab-unfocusedInactiveBackground: #ececec;
+            --vscode-tab-activeForeground: #333333;
+            --vscode-tab-inactiveForeground: rgba(51, 51, 51, 0.7);
+            --vscode-tab-unfocusedActiveForeground: rgba(51, 51, 51, 0.7);
+            --vscode-tab-unfocusedInactiveForeground: rgba(51, 51, 51, 0.35);
+            --vscode-tab-activeModifiedBorder: #33aaee;
+            --vscode-tab-inactiveModifiedBorder: rgba(51, 170, 238, 0.5);
+            --vscode-tab-unfocusedActiveModifiedBorder: rgba(51, 170, 238, 0.7);
+            --vscode-tab-unfocusedInactiveModifiedBorder: rgba(51, 170, 238, 0.25);
+            --vscode-tab-border: #f3f3f3;
+            --vscode-editorPane-background: #ffffff;
+            --vscode-editorGroupHeader-tabsBackground: #f3f3f3;
+            --vscode-editorGroupHeader-noTabsBackground: #ffffff;
+            --vscode-editorGroup-border: #e7e7e7;
+            --vscode-editorGroup-dropBackground: rgba(38, 119, 203, 0.18);
+            --vscode-imagePreview-border: rgba(128, 128, 128, 0.35);
+            --vscode-panel-background: #ffffff;
+            --vscode-panel-border: rgba(128, 128, 128, 0.35);
+            --vscode-panelTitle-activeForeground: #424242;
+            --vscode-panelTitle-inactiveForeground: rgba(66, 66, 66, 0.75);
+            --vscode-panelTitle-activeBorder: #424242;
+            --vscode-panelInput-border: #dddddd;
+            --vscode-panel-dropBorder: #424242;
+            --vscode-panelSection-dropBackground: rgba(38, 119, 203, 0.18);
+            --vscode-panelSectionHeader-background: rgba(128, 128, 128, 0.2);
+            --vscode-panelSection-border: rgba(128, 128, 128, 0.35);
+            --vscode-statusBar-foreground: #ffffff;
+            --vscode-statusBar-noFolderForeground: #ffffff;
+            --vscode-statusBar-background: #007acc;
+            --vscode-statusBar-noFolderBackground: #68217a;
+            --vscode-statusBarItem-activeBackground: rgba(255, 255, 255, 0.18);
+            --vscode-statusBarItem-hoverBackground: rgba(255, 255, 255, 0.12);
+            --vscode-statusBarItem-prominentForeground: #ffffff;
+            --vscode-statusBarItem-prominentBackground: rgba(0, 0, 0, 0.5);
+            --vscode-statusBarItem-prominentHoverBackground: rgba(0, 0, 0, 0.3);
+            --vscode-activityBar-background: #2c2c2c;
+            --vscode-activityBar-foreground: #ffffff;
+            --vscode-activityBar-inactiveForeground: rgba(255, 255, 255, 0.4);
+            --vscode-activityBar-activeBorder: #ffffff;
+            --vscode-activityBar-dropBorder: #ffffff;
+            --vscode-activityBarBadge-background: #007acc;
+            --vscode-activityBarBadge-foreground: #ffffff;
+            --vscode-statusBarItem-remoteBackground: #16825d;
+            --vscode-statusBarItem-remoteForeground: #ffffff;
+            --vscode-extensionBadge-remoteBackground: #007acc;
+            --vscode-extensionBadge-remoteForeground: #ffffff;
+            --vscode-sideBar-background: #f3f3f3;
+            --vscode-sideBarTitle-foreground: #6f6f6f;
+            --vscode-sideBar-dropBackground: rgba(38, 119, 203, 0.18);
+            --vscode-sideBarSectionHeader-background: rgba(0, 0, 0, 0);
+            --vscode-sideBarSectionHeader-border: rgba(97, 97, 97, 0.19);
+            --vscode-titleBar-activeForeground: #333333;
+            --vscode-titleBar-inactiveForeground: rgba(51, 51, 51, 0.6);
+            --vscode-titleBar-activeBackground: #dddddd;
+            --vscode-titleBar-inactiveBackground: rgba(221, 221, 221, 0.6);
+            --vscode-menubar-selectionForeground: #333333;
+            --vscode-menubar-selectionBackground: rgba(0, 0, 0, 0.1);
+            --vscode-notifications-foreground: #616161;
+            --vscode-notifications-background: #f3f3f3;
+            --vscode-notificationLink-foreground: #006ab1;
+            --vscode-notificationCenterHeader-background: #e7e7e7;
+            --vscode-notifications-border: #e7e7e7;
+            --vscode-notificationsErrorIcon-foreground: #e51400;
+            --vscode-notificationsWarningIcon-foreground: #e9a700;
+            --vscode-notificationsInfoIcon-foreground: #75beff;
+            --vscode-editorGutter-commentRangeForeground: #c5c5c5;
+            --vscode-editor-stackFrameHighlightBackground: rgba(255, 255, 102, 0.45);
+            --vscode-editor-focusedStackFrameHighlightBackground: rgba(206, 231, 206, 0.45);
+            --vscode-terminal-foreground: #333333;
+            --vscode-terminal-selectionBackground: rgba(0, 0, 0, 0.25);
+            --vscode-terminal-border: rgba(128, 128, 128, 0.35);
+            --vscode-statusBar-debuggingBackground: #cc6633;
+            --vscode-statusBar-debuggingForeground: #ffffff;
+            --vscode-settings-headerForeground: #444444;
+            --vscode-settings-modifiedItemIndicator: #66afe0;
+            --vscode-settings-dropdownBackground: #ffffff;
+            --vscode-settings-dropdownBorder: #cecece;
+            --vscode-settings-dropdownListBorder: #c8c8c8;
+            --vscode-settings-checkboxBackground: #ffffff;
+            --vscode-settings-checkboxBorder: #cecece;
+            --vscode-settings-textInputBackground: #ffffff;
+            --vscode-settings-textInputForeground: #616161;
+            --vscode-settings-textInputBorder: #cecece;
+            --vscode-settings-numberInputBackground: #ffffff;
+            --vscode-settings-numberInputForeground: #616161;
+            --vscode-settings-numberInputBorder: #cecece;
+            --vscode-debugExceptionWidget-border: #a31515;
+            --vscode-debugExceptionWidget-background: #f1dfde;
+            --vscode-editorGutter-modifiedBackground: #66afe0;
+            --vscode-editorGutter-addedBackground: #81b88b;
+            --vscode-editorGutter-deletedBackground: #ca4b51;
+            --vscode-minimapGutter-modifiedBackground: #66afe0;
+            --vscode-minimapGutter-addedBackground: #81b88b;
+            --vscode-minimapGutter-deletedBackground: #ca4b51;
+            --vscode-editorOverviewRuler-modifiedForeground: rgba(102, 175, 224, 0.6);
+            --vscode-editorOverviewRuler-addedForeground: rgba(129, 184, 139, 0.6);
+            --vscode-editorOverviewRuler-deletedForeground: rgba(202, 75, 81, 0.6);
+            --vscode-searchEditor-textInputBorder: #cecece;
+            --vscode-debugIcon-breakpointForeground: #e51400;
+            --vscode-debugIcon-breakpointDisabledForeground: #848484;
+            --vscode-debugIcon-breakpointUnverifiedForeground: #848484;
+            --vscode-debugIcon-breakpointCurrentStackframeForeground: #ffcc00;
+            --vscode-debugIcon-breakpointStackframeForeground: #89d185;
+            --vscode-debugToolBar-background: #f3f3f3;
+            --vscode-debugIcon-startForeground: #388a34;
+            --vscode-debugIcon-pauseForeground: #007acc;
+            --vscode-debugIcon-stopForeground: #a1260d;
+            --vscode-debugIcon-disconnectForeground: #a1260d;
+            --vscode-debugIcon-restartForeground: #388a34;
+            --vscode-debugIcon-stepOverForeground: #007acc;
+            --vscode-debugIcon-stepIntoForeground: #007acc;
+            --vscode-debugIcon-stepOutForeground: #007acc;
+            --vscode-debugIcon-continueForeground: #007acc;
+            --vscode-debugIcon-stepBackForeground: #007acc;
+            --vscode-debugTokenExpression-name: #9b46b0;
+            --vscode-debugTokenExpression-value: rgba(108, 108, 108, 0.8);
+            --vscode-debugTokenExpression-string: #a31515;
+            --vscode-debugTokenExpression-boolean: #0000ff;
+            --vscode-debugTokenExpression-number: #098658;
+            --vscode-debugTokenExpression-error: #e51400;
+            --vscode-debugView-exceptionLabelForeground: #ffffff;
+            --vscode-debugView-exceptionLabelBackground: #a31515;
+            --vscode-debugView-stateLabelForeground: #616161;
+            --vscode-debugView-stateLabelBackground: rgba(136, 136, 136, 0.27);
+            --vscode-debugView-valueChangedHighlight: #569cd6;
+            --vscode-debugConsole-infoForeground: #75beff;
+            --vscode-debugConsole-warningForeground: #e9a700;
+            --vscode-debugConsole-errorForeground: #a1260d;
+            --vscode-debugConsole-sourceForeground: #616161;
+            --vscode-debugConsoleInputIcon-foreground: #616161;
+            --vscode-extensionButton-prominentBackground: #327e36;
+            --vscode-extensionButton-prominentForeground: #ffffff;
+            --vscode-extensionButton-prominentHoverBackground: #28632b;
+            --vscode-notebook-cellBorderColor: #dae3e9;
+            --vscode-notebook-focusedEditorBorder: #0090f1;
+            --vscode-notebookStatusSuccessIcon-foreground: #388a34;
+            --vscode-notebookStatusErrorIcon-foreground: #a1260d;
+            --vscode-notebookStatusRunningIcon-foreground: #616161;
+            --vscode-notebook-outputContainerBackgroundColor: rgba(200, 221, 241, 0.31);
+            --vscode-notebook-cellToolbarSeparator: rgba(128, 128, 128, 0.35);
+            --vscode-notebook-focusedCellBackground: rgba(200, 221, 241, 0.31);
+            --vscode-notebook-cellHoverBackground: rgba(200, 221, 241, 0.22);
+            --vscode-notebook-focusedCellBorder: rgba(0, 0, 0, 0.12);
+            --vscode-notebook-cellStatusBarItemHoverBackground: rgba(0, 0, 0, 0.08);
+            --vscode-notebook-cellInsertionIndicator: #0090f1;
+            --vscode-notebookScrollbarSlider-background: rgba(100, 100, 100, 0.4);
+            --vscode-notebookScrollbarSlider-hoverBackground: rgba(100, 100, 100, 0.7);
+            --vscode-notebookScrollbarSlider-activeBackground: rgba(0, 0, 0, 0.6);
+            --vscode-notebook-symbolHighlightBackground: rgba(253, 255, 0, 0.2);
+            --vscode-scm-providerBorder: #c8c8c8;
+            --vscode-terminal-ansiBlack: #000000;
+            --vscode-terminal-ansiRed: #cd3131;
+            --vscode-terminal-ansiGreen: #00bc00;
+            --vscode-terminal-ansiYellow: #949800;
+            --vscode-terminal-ansiBlue: #0451a5;
+            --vscode-terminal-ansiMagenta: #bc05bc;
+            --vscode-terminal-ansiCyan: #0598bc;
+            --vscode-terminal-ansiWhite: #555555;
+            --vscode-terminal-ansiBrightBlack: #666666;
+            --vscode-terminal-ansiBrightRed: #cd3131;
+            --vscode-terminal-ansiBrightGreen: #14ce14;
+            --vscode-terminal-ansiBrightYellow: #b5ba00;
+            --vscode-terminal-ansiBrightBlue: #0451a5;
+            --vscode-terminal-ansiBrightMagenta: #bc05bc;
+            --vscode-terminal-ansiBrightCyan: #0598bc;
+            --vscode-terminal-ansiBrightWhite: #a5a5a5;
+            --vscode-gitDecoration-addedResourceForeground: #587c0c;
+            --vscode-gitDecoration-modifiedResourceForeground: #895503;
+            --vscode-gitDecoration-deletedResourceForeground: #ad0707;
+            --vscode-gitDecoration-untrackedResourceForeground: #007100;
+            --vscode-gitDecoration-ignoredResourceForeground: #8e8e90;
+            --vscode-gitDecoration-conflictingResourceForeground: #6c6cc4;
+            --vscode-gitDecoration-submoduleResourceForeground: #1258a7;
+            --vscode-gitlens-gutterBackgroundColor: rgba(0, 0, 0, 0.05);
+            --vscode-gitlens-gutterForegroundColor: #747474;
+            --vscode-gitlens-gutterUncommittedForegroundColor: rgba(0, 188, 242, 0.6);
+            --vscode-gitlens-trailingLineBackgroundColor: rgba(0, 0, 0, 0);
+            --vscode-gitlens-trailingLineForegroundColor: rgba(153, 153, 153, 0.35);
+            --vscode-gitlens-lineHighlightBackgroundColor: rgba(0, 188, 242, 0.2);
+            --vscode-gitlens-lineHighlightOverviewRulerColor: rgba(0, 188, 242, 0.6);
+            --vscode-issues-newIssueDecoration: rgba(0, 0, 0, 0.28);
         }
-        #list-headers > ul {
-            padding: 0;
+
+        body {
+            background-color: var(--vscode-editor-background);
+            color: var(--vscode-editor-foreground);
+            font-family: var(--vscode-font-family);
+            font-weight: var(--vscode-font-weight);
+            font-size: var(--vscode-font-size);
+            margin: 0;
+            padding: 0 20px;
         }
-        #list-headers h1, h2, h3, h4, h5 {
-            white-space: nowrap;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
         }
-        .markdown-body {
-            padding-left: 2em;
+
+        a {
+            color: var(--vscode-textLink-foreground);
         }
-        @media (min-width: 992px) {
-            .vh-lg-100{
-                height: 100vh !important;
-            }
+
+        a:hover {
+            color: var(--vscode-textLink-activeForeground);
+        }
+
+        a:focus,
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 1px solid -webkit-focus-ring-color;
+            outline-offset: -1px;
+        }
+
+        code {
+            color: var(--vscode-textPreformat-foreground);
+        }
+
+        blockquote {
+            background: var(--vscode-textBlockQuote-background);
+            border-color: var(--vscode-textBlockQuote-border);
+        }
+
+        kbd {
+            color: var(--vscode-editor-foreground);
+            border-radius: 3px;
+            vertical-align: middle;
+            padding: 1px 3px;
+
+            background-color: hsla(0, 0%, 50%, .17);
+            border: 1px solid rgba(71, 71, 71, .4);
+            border-bottom-color: rgba(88, 88, 88, .4);
+            box-shadow: inset 0 -1px 0 rgba(88, 88, 88, .4);
+        }
+
+        .vscode-light kbd {
+            background-color: hsla(0, 0%, 87%, .5);
+            border: 1px solid hsla(0, 0%, 80%, .7);
+            border-bottom-color: hsla(0, 0%, 73%, .7);
+            box-shadow: inset 0 -1px 0 hsla(0, 0%, 73%, .7);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background-color: var(--vscode-editor-background);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--vscode-scrollbarSlider-background);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--vscode-scrollbarSlider-hoverBackground);
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background-color: var(--vscode-scrollbarSlider-activeBackground);
+        }
+
+        .emoji {
+            height: 20px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+        }
+
+        .page-break {
+            display: block;
+            page-break-after: always;
+        }
+
+        .no-page-break {
+            page-break-inside: avoid;
         }
     </style>
+    <style>
+        /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+        .vscode-dark img[src$=\#gh-light-mode-only],
+        .vscode-light img[src$=\#gh-dark-mode-only],
+        .vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+        .vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+            display: none;
+        }
+    </style>
+    <style>
+        /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+        html,
+        body {
+            font-family: var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);
+            font-size: var(--markdown-font-size, 14px);
+            padding: 0 26px;
+            line-height: var(--markdown-line-height, 22px);
+            word-wrap: break-word;
+        }
+
+        body {
+            padding-top: 1em;
+        }
+
+        /* Reset margin top for elements */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        ol,
+        ul,
+        pre {
+            margin-top: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+
+        #code-csp-warning {
+            position: fixed;
+            top: 0;
+            right: 0;
+            color: white;
+            margin: 16px;
+            text-align: center;
+            font-size: 12px;
+            font-family: sans-serif;
+            background-color: #444444;
+            cursor: pointer;
+            padding: 6px;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+        }
+
+        #code-csp-warning:hover {
+            text-decoration: none;
+            background-color: #007acc;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
+        }
+
+        body.scrollBeyondLastLine {
+            margin-bottom: calc(100vh - 22px);
+        }
+
+        body.showEditorSelection .code-line {
+            position: relative;
+        }
+
+        body.showEditorSelection :not(tr, ul, ol).code-active-line:before,
+        body.showEditorSelection :not(tr, ul, ol).code-line:hover:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -12px;
+            height: 100%;
+        }
+
+        .vscode-high-contrast.showEditorSelection :not(tr, ul, ol).code-line .code-line:hover:before {
+            border-left: none;
+        }
+
+        body.showEditorSelection li.code-active-line:before,
+        body.showEditorSelection li.code-line:hover:before {
+            left: -30px;
+        }
+
+        .vscode-light.showEditorSelection .code-active-line:before {
+            border-left: 3px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .vscode-light.showEditorSelection .code-line:hover:before {
+            border-left: 3px solid rgba(0, 0, 0, 0.40);
+        }
+
+        .vscode-dark.showEditorSelection .code-active-line:before {
+            border-left: 3px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .vscode-dark.showEditorSelection .code-line:hover:before {
+            border-left: 3px solid rgba(255, 255, 255, 0.60);
+        }
+
+        .vscode-high-contrast.showEditorSelection .code-active-line:before {
+            border-left: 3px solid rgba(255, 160, 0, 0.7);
+        }
+
+        .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+            border-left: 3px solid rgba(255, 160, 0, 1);
+        }
+
+        /* Prevent `sub` and `sup` elements from affecting line height */
+        sub,
+        sup {
+            line-height: 0;
+        }
+
+        ul ul:first-child,
+        ul ol:first-child,
+        ol ul:first-child,
+        ol ol:first-child {
+            margin-bottom: 0;
+        }
+
+        img,
+        video {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:focus,
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 1px solid -webkit-focus-ring-color;
+            outline-offset: -1px;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        li p {
+            margin-bottom: 0.7em;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 0.7em;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            border-bottom: 1px solid;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-top: 0;
+            padding-bottom: 0.3em;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            padding-bottom: 0.3em;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+
+        h3 {
+            font-size: 1.25em;
+        }
+
+        h4 {
+            font-size: 1em;
+        }
+
+        h5 {
+            font-size: 0.875em;
+        }
+
+        h6 {
+            font-size: 0.85em;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-bottom: 0.7em;
+        }
+
+        th {
+            text-align: left;
+            border-bottom: 1px solid;
+        }
+
+        th,
+        td {
+            padding: 5px 10px;
+        }
+
+        table>tbody>tr+tr>td {
+            border-top: 1px solid;
+        }
+
+        blockquote {
+            margin: 0;
+            padding: 0px 16px 0 10px;
+            border-left-width: 5px;
+            border-left-style: solid;
+            border-radius: 2px;
+        }
+
+        code {
+            font-family: var(--vscode-editor-font-family, "SF Mono", Monaco, Menlo, Consolas, "Ubuntu Mono", "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace);
+            font-size: 1em;
+            line-height: 1.357em;
+        }
+
+        body.wordWrap pre {
+            white-space: pre-wrap;
+        }
+
+        pre:not(.hljs),
+        pre.hljs code>div {
+            padding: 16px;
+            border-radius: 3px;
+            overflow: auto;
+        }
+
+        pre code {
+            display: inline-block;
+            color: var(--vscode-editor-foreground);
+            tab-size: 4;
+            background: none;
+        }
+
+        /** Theming */
+
+        pre {
+            background-color: var(--vscode-textCodeBlock-background);
+            border: 1px solid var(--vscode-widget-border);
+        }
+
+        .vscode-high-contrast h1 {
+            border-color: rgb(0, 0, 0);
+        }
+
+        .vscode-light th {
+            border-color: rgba(0, 0, 0, 0.69);
+        }
+
+        .vscode-dark th {
+            border-color: rgba(255, 255, 255, 0.69);
+        }
+
+        .vscode-light h1,
+        .vscode-light h2,
+        .vscode-light hr,
+        .vscode-light td {
+            border-color: rgba(0, 0, 0, 0.18);
+        }
+
+        .vscode-dark h1,
+        .vscode-dark h2,
+        .vscode-dark hr,
+        .vscode-dark td {
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+    </style>
+    <style>
+        /*
+https://raw.githubusercontent.com/isagalaev/highlight.js/master/src/styles/vs2015.css
+*/
+        /*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+
+
+        .hljs-keyword,
+        .hljs-literal,
+        .hljs-symbol,
+        .hljs-name {
+            color: #569CD6;
+        }
+
+        .hljs-link {
+            color: #569CD6;
+            text-decoration: underline;
+        }
+
+        .hljs-built_in,
+        .hljs-type {
+            color: #4EC9B0;
+        }
+
+        .hljs-number,
+        .hljs-class {
+            color: #B8D7A3;
+        }
+
+        .hljs-string,
+        .hljs-meta-string {
+            color: #D69D85;
+        }
+
+        .hljs-regexp,
+        .hljs-template-tag {
+            color: #9A5334;
+        }
+
+        .hljs-subst,
+        .hljs-function,
+        .hljs-title,
+        .hljs-params,
+        .hljs-formula {
+            color: #DCDCDC;
+        }
+
+        .hljs-comment,
+        .hljs-quote {
+            color: #57A64A;
+            font-style: italic;
+        }
+
+        .hljs-doctag {
+            color: #608B4E;
+        }
+
+        .hljs-meta,
+        .hljs-meta-keyword,
+        .hljs-tag {
+            color: #9B9B9B;
+        }
+
+        .hljs-variable,
+        .hljs-template-variable {
+            color: #BD63C5;
+        }
+
+        .hljs-attr,
+        .hljs-attribute,
+        .hljs-builtin-name {
+            color: #9CDCFE;
+        }
+
+        .hljs-section {
+            color: gold;
+        }
+
+        .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .hljs-strong {
+            font-weight: bold;
+        }
+
+        /*.hljs-code {
+	font-family:'Monospace';
+}*/
+
+        .hljs-bullet,
+        .hljs-selector-tag,
+        .hljs-selector-id,
+        .hljs-selector-class,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo {
+            color: #D7BA7D;
+        }
+
+        .hljs-addition {
+            background-color: var(--vscode-diffEditor-insertedTextBackground, rgba(155, 185, 85, 0.2));
+            color: rgb(155, 185, 85);
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hljs-deletion {
+            background: var(--vscode-diffEditor-removedTextBackground, rgba(255, 0, 0, 0.2));
+            color: rgb(255, 0, 0);
+            display: inline-block;
+            width: 100%;
+        }
+
+
+        /*
+From https://raw.githubusercontent.com/isagalaev/highlight.js/master/src/styles/vs.css
+*/
+        /*
+
+Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
+
+*/
+
+        .vscode-light .hljs-function,
+        .vscode-light .hljs-params,
+        .vscode-light .hljs-number,
+        .vscode-light .hljs-class {
+            color: inherit;
+        }
+
+        .vscode-light .hljs-comment,
+        .vscode-light .hljs-quote,
+        .vscode-light .hljs-number,
+        .vscode-light .hljs-class,
+        .vscode-light .hljs-variable {
+            color: #008000;
+        }
+
+        .vscode-light .hljs-keyword,
+        .vscode-light .hljs-selector-tag,
+        .vscode-light .hljs-name,
+        .vscode-light .hljs-tag {
+            color: #00f;
+        }
+
+        .vscode-light .hljs-built_in,
+        .vscode-light .hljs-builtin-name {
+            color: #007acc;
+        }
+
+        .vscode-light .hljs-string,
+        .vscode-light .hljs-section,
+        .vscode-light .hljs-attribute,
+        .vscode-light .hljs-literal,
+        .vscode-light .hljs-template-tag,
+        .vscode-light .hljs-template-variable,
+        .vscode-light .hljs-type {
+            color: #a31515;
+        }
+
+        .vscode-light .hljs-subst,
+        .vscode-light .hljs-selector-attr,
+        .vscode-light .hljs-selector-pseudo,
+        .vscode-light .hljs-meta,
+        .vscode-light .hljs-meta-keyword {
+            color: #2b91af;
+        }
+
+        .vscode-light .hljs-title,
+        .vscode-light .hljs-doctag {
+            color: #808080;
+        }
+
+        .vscode-light .hljs-attr {
+            color: #f00;
+        }
+
+        .vscode-light .hljs-symbol,
+        .vscode-light .hljs-bullet,
+        .vscode-light .hljs-link {
+            color: #00b0e8;
+        }
+
+
+        .vscode-light .hljs-emphasis {
+            font-style: italic;
+        }
+
+        .vscode-light .hljs-strong {
+            font-weight: bold;
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: KaTeX_AMS;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_AMS-Regular.woff2) format("woff2"), url(fonts/KaTeX_AMS-Regular.woff) format("woff"), url(fonts/KaTeX_AMS-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Caligraphic;
+            font-style: normal;
+            font-weight: 700;
+            src: url(fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"), url(fonts/KaTeX_Caligraphic-Bold.woff) format("woff"), url(fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Caligraphic;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"), url(fonts/KaTeX_Caligraphic-Regular.woff) format("woff"), url(fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Fraktur;
+            font-style: normal;
+            font-weight: 700;
+            src: url(fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"), url(fonts/KaTeX_Fraktur-Bold.woff) format("woff"), url(fonts/KaTeX_Fraktur-Bold.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Fraktur;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"), url(fonts/KaTeX_Fraktur-Regular.woff) format("woff"), url(fonts/KaTeX_Fraktur-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Main;
+            font-style: normal;
+            font-weight: 700;
+            src: url(fonts/KaTeX_Main-Bold.woff2) format("woff2"), url(fonts/KaTeX_Main-Bold.woff) format("woff"), url(fonts/KaTeX_Main-Bold.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Main;
+            font-style: italic;
+            font-weight: 700;
+            src: url(fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"), url(fonts/KaTeX_Main-BoldItalic.woff) format("woff"), url(fonts/KaTeX_Main-BoldItalic.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Main;
+            font-style: italic;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Main-Italic.woff2) format("woff2"), url(fonts/KaTeX_Main-Italic.woff) format("woff"), url(fonts/KaTeX_Main-Italic.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Main;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Main-Regular.woff2) format("woff2"), url(fonts/KaTeX_Main-Regular.woff) format("woff"), url(fonts/KaTeX_Main-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Math;
+            font-style: italic;
+            font-weight: 700;
+            src: url(fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"), url(fonts/KaTeX_Math-BoldItalic.woff) format("woff"), url(fonts/KaTeX_Math-BoldItalic.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Math;
+            font-style: italic;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Math-Italic.woff2) format("woff2"), url(fonts/KaTeX_Math-Italic.woff) format("woff"), url(fonts/KaTeX_Math-Italic.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: "KaTeX_SansSerif";
+            font-style: normal;
+            font-weight: 700;
+            src: url(fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"), url(fonts/KaTeX_SansSerif-Bold.woff) format("woff"), url(fonts/KaTeX_SansSerif-Bold.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: "KaTeX_SansSerif";
+            font-style: italic;
+            font-weight: 400;
+            src: url(fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"), url(fonts/KaTeX_SansSerif-Italic.woff) format("woff"), url(fonts/KaTeX_SansSerif-Italic.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: "KaTeX_SansSerif";
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"), url(fonts/KaTeX_SansSerif-Regular.woff) format("woff"), url(fonts/KaTeX_SansSerif-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Script;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Script-Regular.woff2) format("woff2"), url(fonts/KaTeX_Script-Regular.woff) format("woff"), url(fonts/KaTeX_Script-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Size1;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Size1-Regular.woff2) format("woff2"), url(fonts/KaTeX_Size1-Regular.woff) format("woff"), url(fonts/KaTeX_Size1-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Size2;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Size2-Regular.woff2) format("woff2"), url(fonts/KaTeX_Size2-Regular.woff) format("woff"), url(fonts/KaTeX_Size2-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Size3;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Size3-Regular.woff2) format("woff2"), url(fonts/KaTeX_Size3-Regular.woff) format("woff"), url(fonts/KaTeX_Size3-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Size4;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Size4-Regular.woff2) format("woff2"), url(fonts/KaTeX_Size4-Regular.woff) format("woff"), url(fonts/KaTeX_Size4-Regular.ttf) format("truetype")
+        }
+
+        @font-face {
+            font-family: KaTeX_Typewriter;
+            font-style: normal;
+            font-weight: 400;
+            src: url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"), url(fonts/KaTeX_Typewriter-Regular.woff) format("woff"), url(fonts/KaTeX_Typewriter-Regular.ttf) format("truetype")
+        }
+
+        .katex {
+            font: normal 1.21em KaTeX_Main, Times New Roman, serif;
+            line-height: 1.2;
+            text-indent: 0;
+            text-rendering: auto
+        }
+
+        .katex * {
+            -ms-high-contrast-adjust: none !important;
+            border-color: currentColor
+        }
+
+        .katex .katex-version:after {
+            content: "0.16.21"
+        }
+
+        .katex .katex-mathml {
+            clip: rect(1px, 1px, 1px, 1px);
+            border: 0;
+            height: 1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px
+        }
+
+        .katex .katex-html>.newline {
+            display: block
+        }
+
+        .katex .base {
+            position: relative;
+            white-space: nowrap;
+            width: -webkit-min-content;
+            width: -moz-min-content;
+            width: min-content
+        }
+
+        .katex .base,
+        .katex .strut {
+            display: inline-block
+        }
+
+        .katex .textbf {
+            font-weight: 700
+        }
+
+        .katex .textit {
+            font-style: italic
+        }
+
+        .katex .textrm {
+            font-family: KaTeX_Main
+        }
+
+        .katex .textsf {
+            font-family: KaTeX_SansSerif
+        }
+
+        .katex .texttt {
+            font-family: KaTeX_Typewriter
+        }
+
+        .katex .mathnormal {
+            font-family: KaTeX_Math;
+            font-style: italic
+        }
+
+        .katex .mathit {
+            font-family: KaTeX_Main;
+            font-style: italic
+        }
+
+        .katex .mathrm {
+            font-style: normal
+        }
+
+        .katex .mathbf {
+            font-family: KaTeX_Main;
+            font-weight: 700
+        }
+
+        .katex .boldsymbol {
+            font-family: KaTeX_Math;
+            font-style: italic;
+            font-weight: 700
+        }
+
+        .katex .amsrm,
+        .katex .mathbb,
+        .katex .textbb {
+            font-family: KaTeX_AMS
+        }
+
+        .katex .mathcal {
+            font-family: KaTeX_Caligraphic
+        }
+
+        .katex .mathfrak,
+        .katex .textfrak {
+            font-family: KaTeX_Fraktur
+        }
+
+        .katex .mathboldfrak,
+        .katex .textboldfrak {
+            font-family: KaTeX_Fraktur;
+            font-weight: 700
+        }
+
+        .katex .mathtt {
+            font-family: KaTeX_Typewriter
+        }
+
+        .katex .mathscr,
+        .katex .textscr {
+            font-family: KaTeX_Script
+        }
+
+        .katex .mathsf,
+        .katex .textsf {
+            font-family: KaTeX_SansSerif
+        }
+
+        .katex .mathboldsf,
+        .katex .textboldsf {
+            font-family: KaTeX_SansSerif;
+            font-weight: 700
+        }
+
+        .katex .mathitsf,
+        .katex .mathsfit,
+        .katex .textitsf {
+            font-family: KaTeX_SansSerif;
+            font-style: italic
+        }
+
+        .katex .mainrm {
+            font-family: KaTeX_Main;
+            font-style: normal
+        }
+
+        .katex .vlist-t {
+            border-collapse: collapse;
+            display: inline-table;
+            table-layout: fixed
+        }
+
+        .katex .vlist-r {
+            display: table-row
+        }
+
+        .katex .vlist {
+            display: table-cell;
+            position: relative;
+            vertical-align: bottom
+        }
+
+        .katex .vlist>span {
+            display: block;
+            height: 0;
+            position: relative
+        }
+
+        .katex .vlist>span>span {
+            display: inline-block
+        }
+
+        .katex .vlist>span>.pstrut {
+            overflow: hidden;
+            width: 0
+        }
+
+        .katex .vlist-t2 {
+            margin-right: -2px
+        }
+
+        .katex .vlist-s {
+            display: table-cell;
+            font-size: 1px;
+            min-width: 2px;
+            vertical-align: bottom;
+            width: 2px
+        }
+
+        .katex .vbox {
+            align-items: baseline;
+            display: inline-flex;
+            flex-direction: column
+        }
+
+        .katex .hbox {
+            width: 100%
+        }
+
+        .katex .hbox,
+        .katex .thinbox {
+            display: inline-flex;
+            flex-direction: row
+        }
+
+        .katex .thinbox {
+            max-width: 0;
+            width: 0
+        }
+
+        .katex .msupsub {
+            text-align: left
+        }
+
+        .katex .mfrac>span>span {
+            text-align: center
+        }
+
+        .katex .mfrac .frac-line {
+            border-bottom-style: solid;
+            display: inline-block;
+            width: 100%
+        }
+
+        .katex .hdashline,
+        .katex .hline,
+        .katex .mfrac .frac-line,
+        .katex .overline .overline-line,
+        .katex .rule,
+        .katex .underline .underline-line {
+            min-height: 1px
+        }
+
+        .katex .mspace {
+            display: inline-block
+        }
+
+        .katex .clap,
+        .katex .llap,
+        .katex .rlap {
+            position: relative;
+            width: 0
+        }
+
+        .katex .clap>.inner,
+        .katex .llap>.inner,
+        .katex .rlap>.inner {
+            position: absolute
+        }
+
+        .katex .clap>.fix,
+        .katex .llap>.fix,
+        .katex .rlap>.fix {
+            display: inline-block
+        }
+
+        .katex .llap>.inner {
+            right: 0
+        }
+
+        .katex .clap>.inner,
+        .katex .rlap>.inner {
+            left: 0
+        }
+
+        .katex .clap>.inner>span {
+            margin-left: -50%;
+            margin-right: 50%
+        }
+
+        .katex .rule {
+            border: 0 solid;
+            display: inline-block;
+            position: relative
+        }
+
+        .katex .hline,
+        .katex .overline .overline-line,
+        .katex .underline .underline-line {
+            border-bottom-style: solid;
+            display: inline-block;
+            width: 100%
+        }
+
+        .katex .hdashline {
+            border-bottom-style: dashed;
+            display: inline-block;
+            width: 100%
+        }
+
+        .katex .sqrt>.root {
+            margin-left: .2777777778em;
+            margin-right: -.5555555556em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size1,
+        .katex .sizing.reset-size1.size1 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size2,
+        .katex .sizing.reset-size1.size2 {
+            font-size: 1.2em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size3,
+        .katex .sizing.reset-size1.size3 {
+            font-size: 1.4em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size4,
+        .katex .sizing.reset-size1.size4 {
+            font-size: 1.6em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size5,
+        .katex .sizing.reset-size1.size5 {
+            font-size: 1.8em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size6,
+        .katex .sizing.reset-size1.size6 {
+            font-size: 2em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size7,
+        .katex .sizing.reset-size1.size7 {
+            font-size: 2.4em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size8,
+        .katex .sizing.reset-size1.size8 {
+            font-size: 2.88em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size9,
+        .katex .sizing.reset-size1.size9 {
+            font-size: 3.456em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size10,
+        .katex .sizing.reset-size1.size10 {
+            font-size: 4.148em
+        }
+
+        .katex .fontsize-ensurer.reset-size1.size11,
+        .katex .sizing.reset-size1.size11 {
+            font-size: 4.976em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size1,
+        .katex .sizing.reset-size2.size1 {
+            font-size: .8333333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size2,
+        .katex .sizing.reset-size2.size2 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size3,
+        .katex .sizing.reset-size2.size3 {
+            font-size: 1.1666666667em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size4,
+        .katex .sizing.reset-size2.size4 {
+            font-size: 1.3333333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size5,
+        .katex .sizing.reset-size2.size5 {
+            font-size: 1.5em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size6,
+        .katex .sizing.reset-size2.size6 {
+            font-size: 1.6666666667em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size7,
+        .katex .sizing.reset-size2.size7 {
+            font-size: 2em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size8,
+        .katex .sizing.reset-size2.size8 {
+            font-size: 2.4em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size9,
+        .katex .sizing.reset-size2.size9 {
+            font-size: 2.88em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size10,
+        .katex .sizing.reset-size2.size10 {
+            font-size: 3.4566666667em
+        }
+
+        .katex .fontsize-ensurer.reset-size2.size11,
+        .katex .sizing.reset-size2.size11 {
+            font-size: 4.1466666667em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size1,
+        .katex .sizing.reset-size3.size1 {
+            font-size: .7142857143em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size2,
+        .katex .sizing.reset-size3.size2 {
+            font-size: .8571428571em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size3,
+        .katex .sizing.reset-size3.size3 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size4,
+        .katex .sizing.reset-size3.size4 {
+            font-size: 1.1428571429em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size5,
+        .katex .sizing.reset-size3.size5 {
+            font-size: 1.2857142857em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size6,
+        .katex .sizing.reset-size3.size6 {
+            font-size: 1.4285714286em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size7,
+        .katex .sizing.reset-size3.size7 {
+            font-size: 1.7142857143em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size8,
+        .katex .sizing.reset-size3.size8 {
+            font-size: 2.0571428571em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size9,
+        .katex .sizing.reset-size3.size9 {
+            font-size: 2.4685714286em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size10,
+        .katex .sizing.reset-size3.size10 {
+            font-size: 2.9628571429em
+        }
+
+        .katex .fontsize-ensurer.reset-size3.size11,
+        .katex .sizing.reset-size3.size11 {
+            font-size: 3.5542857143em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size1,
+        .katex .sizing.reset-size4.size1 {
+            font-size: .625em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size2,
+        .katex .sizing.reset-size4.size2 {
+            font-size: .75em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size3,
+        .katex .sizing.reset-size4.size3 {
+            font-size: .875em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size4,
+        .katex .sizing.reset-size4.size4 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size5,
+        .katex .sizing.reset-size4.size5 {
+            font-size: 1.125em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size6,
+        .katex .sizing.reset-size4.size6 {
+            font-size: 1.25em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size7,
+        .katex .sizing.reset-size4.size7 {
+            font-size: 1.5em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size8,
+        .katex .sizing.reset-size4.size8 {
+            font-size: 1.8em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size9,
+        .katex .sizing.reset-size4.size9 {
+            font-size: 2.16em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size10,
+        .katex .sizing.reset-size4.size10 {
+            font-size: 2.5925em
+        }
+
+        .katex .fontsize-ensurer.reset-size4.size11,
+        .katex .sizing.reset-size4.size11 {
+            font-size: 3.11em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size1,
+        .katex .sizing.reset-size5.size1 {
+            font-size: .5555555556em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size2,
+        .katex .sizing.reset-size5.size2 {
+            font-size: .6666666667em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size3,
+        .katex .sizing.reset-size5.size3 {
+            font-size: .7777777778em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size4,
+        .katex .sizing.reset-size5.size4 {
+            font-size: .8888888889em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size5,
+        .katex .sizing.reset-size5.size5 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size6,
+        .katex .sizing.reset-size5.size6 {
+            font-size: 1.1111111111em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size7,
+        .katex .sizing.reset-size5.size7 {
+            font-size: 1.3333333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size8,
+        .katex .sizing.reset-size5.size8 {
+            font-size: 1.6em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size9,
+        .katex .sizing.reset-size5.size9 {
+            font-size: 1.92em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size10,
+        .katex .sizing.reset-size5.size10 {
+            font-size: 2.3044444444em
+        }
+
+        .katex .fontsize-ensurer.reset-size5.size11,
+        .katex .sizing.reset-size5.size11 {
+            font-size: 2.7644444444em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size1,
+        .katex .sizing.reset-size6.size1 {
+            font-size: .5em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size2,
+        .katex .sizing.reset-size6.size2 {
+            font-size: .6em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size3,
+        .katex .sizing.reset-size6.size3 {
+            font-size: .7em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size4,
+        .katex .sizing.reset-size6.size4 {
+            font-size: .8em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size5,
+        .katex .sizing.reset-size6.size5 {
+            font-size: .9em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size6,
+        .katex .sizing.reset-size6.size6 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size7,
+        .katex .sizing.reset-size6.size7 {
+            font-size: 1.2em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size8,
+        .katex .sizing.reset-size6.size8 {
+            font-size: 1.44em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size9,
+        .katex .sizing.reset-size6.size9 {
+            font-size: 1.728em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size10,
+        .katex .sizing.reset-size6.size10 {
+            font-size: 2.074em
+        }
+
+        .katex .fontsize-ensurer.reset-size6.size11,
+        .katex .sizing.reset-size6.size11 {
+            font-size: 2.488em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size1,
+        .katex .sizing.reset-size7.size1 {
+            font-size: .4166666667em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size2,
+        .katex .sizing.reset-size7.size2 {
+            font-size: .5em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size3,
+        .katex .sizing.reset-size7.size3 {
+            font-size: .5833333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size4,
+        .katex .sizing.reset-size7.size4 {
+            font-size: .6666666667em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size5,
+        .katex .sizing.reset-size7.size5 {
+            font-size: .75em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size6,
+        .katex .sizing.reset-size7.size6 {
+            font-size: .8333333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size7,
+        .katex .sizing.reset-size7.size7 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size8,
+        .katex .sizing.reset-size7.size8 {
+            font-size: 1.2em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size9,
+        .katex .sizing.reset-size7.size9 {
+            font-size: 1.44em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size10,
+        .katex .sizing.reset-size7.size10 {
+            font-size: 1.7283333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size7.size11,
+        .katex .sizing.reset-size7.size11 {
+            font-size: 2.0733333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size1,
+        .katex .sizing.reset-size8.size1 {
+            font-size: .3472222222em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size2,
+        .katex .sizing.reset-size8.size2 {
+            font-size: .4166666667em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size3,
+        .katex .sizing.reset-size8.size3 {
+            font-size: .4861111111em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size4,
+        .katex .sizing.reset-size8.size4 {
+            font-size: .5555555556em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size5,
+        .katex .sizing.reset-size8.size5 {
+            font-size: .625em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size6,
+        .katex .sizing.reset-size8.size6 {
+            font-size: .6944444444em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size7,
+        .katex .sizing.reset-size8.size7 {
+            font-size: .8333333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size8,
+        .katex .sizing.reset-size8.size8 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size9,
+        .katex .sizing.reset-size8.size9 {
+            font-size: 1.2em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size10,
+        .katex .sizing.reset-size8.size10 {
+            font-size: 1.4402777778em
+        }
+
+        .katex .fontsize-ensurer.reset-size8.size11,
+        .katex .sizing.reset-size8.size11 {
+            font-size: 1.7277777778em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size1,
+        .katex .sizing.reset-size9.size1 {
+            font-size: .2893518519em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size2,
+        .katex .sizing.reset-size9.size2 {
+            font-size: .3472222222em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size3,
+        .katex .sizing.reset-size9.size3 {
+            font-size: .4050925926em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size4,
+        .katex .sizing.reset-size9.size4 {
+            font-size: .462962963em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size5,
+        .katex .sizing.reset-size9.size5 {
+            font-size: .5208333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size6,
+        .katex .sizing.reset-size9.size6 {
+            font-size: .5787037037em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size7,
+        .katex .sizing.reset-size9.size7 {
+            font-size: .6944444444em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size8,
+        .katex .sizing.reset-size9.size8 {
+            font-size: .8333333333em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size9,
+        .katex .sizing.reset-size9.size9 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size10,
+        .katex .sizing.reset-size9.size10 {
+            font-size: 1.2002314815em
+        }
+
+        .katex .fontsize-ensurer.reset-size9.size11,
+        .katex .sizing.reset-size9.size11 {
+            font-size: 1.4398148148em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size1,
+        .katex .sizing.reset-size10.size1 {
+            font-size: .2410800386em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size2,
+        .katex .sizing.reset-size10.size2 {
+            font-size: .2892960463em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size3,
+        .katex .sizing.reset-size10.size3 {
+            font-size: .337512054em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size4,
+        .katex .sizing.reset-size10.size4 {
+            font-size: .3857280617em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size5,
+        .katex .sizing.reset-size10.size5 {
+            font-size: .4339440694em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size6,
+        .katex .sizing.reset-size10.size6 {
+            font-size: .4821600771em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size7,
+        .katex .sizing.reset-size10.size7 {
+            font-size: .5785920926em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size8,
+        .katex .sizing.reset-size10.size8 {
+            font-size: .6943105111em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size9,
+        .katex .sizing.reset-size10.size9 {
+            font-size: .8331726133em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size10,
+        .katex .sizing.reset-size10.size10 {
+            font-size: 1em
+        }
+
+        .katex .fontsize-ensurer.reset-size10.size11,
+        .katex .sizing.reset-size10.size11 {
+            font-size: 1.1996142719em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size1,
+        .katex .sizing.reset-size11.size1 {
+            font-size: .2009646302em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size2,
+        .katex .sizing.reset-size11.size2 {
+            font-size: .2411575563em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size3,
+        .katex .sizing.reset-size11.size3 {
+            font-size: .2813504823em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size4,
+        .katex .sizing.reset-size11.size4 {
+            font-size: .3215434084em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size5,
+        .katex .sizing.reset-size11.size5 {
+            font-size: .3617363344em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size6,
+        .katex .sizing.reset-size11.size6 {
+            font-size: .4019292605em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size7,
+        .katex .sizing.reset-size11.size7 {
+            font-size: .4823151125em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size8,
+        .katex .sizing.reset-size11.size8 {
+            font-size: .578778135em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size9,
+        .katex .sizing.reset-size11.size9 {
+            font-size: .6945337621em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size10,
+        .katex .sizing.reset-size11.size10 {
+            font-size: .8336012862em
+        }
+
+        .katex .fontsize-ensurer.reset-size11.size11,
+        .katex .sizing.reset-size11.size11 {
+            font-size: 1em
+        }
+
+        .katex .delimsizing.size1 {
+            font-family: KaTeX_Size1
+        }
+
+        .katex .delimsizing.size2 {
+            font-family: KaTeX_Size2
+        }
+
+        .katex .delimsizing.size3 {
+            font-family: KaTeX_Size3
+        }
+
+        .katex .delimsizing.size4 {
+            font-family: KaTeX_Size4
+        }
+
+        .katex .delimsizing.mult .delim-size1>span {
+            font-family: KaTeX_Size1
+        }
+
+        .katex .delimsizing.mult .delim-size4>span {
+            font-family: KaTeX_Size4
+        }
+
+        .katex .nulldelimiter {
+            display: inline-block;
+            width: .12em
+        }
+
+        .katex .delimcenter,
+        .katex .op-symbol {
+            position: relative
+        }
+
+        .katex .op-symbol.small-op {
+            font-family: KaTeX_Size1
+        }
+
+        .katex .op-symbol.large-op {
+            font-family: KaTeX_Size2
+        }
+
+        .katex .accent>.vlist-t,
+        .katex .op-limits>.vlist-t {
+            text-align: center
+        }
+
+        .katex .accent .accent-body {
+            position: relative
+        }
+
+        .katex .accent .accent-body:not(.accent-full) {
+            width: 0
+        }
+
+        .katex .overlay {
+            display: block
+        }
+
+        .katex .mtable .vertical-separator {
+            display: inline-block;
+            min-width: 1px
+        }
+
+        .katex .mtable .arraycolsep {
+            display: inline-block
+        }
+
+        .katex .mtable .col-align-c>.vlist-t {
+            text-align: center
+        }
+
+        .katex .mtable .col-align-l>.vlist-t {
+            text-align: left
+        }
+
+        .katex .mtable .col-align-r>.vlist-t {
+            text-align: right
+        }
+
+        .katex .svg-align {
+            text-align: left
+        }
+
+        .katex svg {
+            fill: currentColor;
+            stroke: currentColor;
+            fill-rule: nonzero;
+            fill-opacity: 1;
+            stroke-width: 1;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+            stroke-miterlimit: 4;
+            stroke-dasharray: none;
+            stroke-dashoffset: 0;
+            stroke-opacity: 1;
+            display: block;
+            height: inherit;
+            position: absolute;
+            width: 100%
+        }
+
+        .katex svg path {
+            stroke: none
+        }
+
+        .katex img {
+            border-style: none;
+            max-height: none;
+            max-width: none;
+            min-height: 0;
+            min-width: 0
+        }
+
+        .katex .stretchy {
+            display: block;
+            overflow: hidden;
+            position: relative;
+            width: 100%
+        }
+
+        .katex .stretchy:after,
+        .katex .stretchy:before {
+            content: ""
+        }
+
+        .katex .hide-tail {
+            overflow: hidden;
+            position: relative;
+            width: 100%
+        }
+
+        .katex .halfarrow-left {
+            left: 0;
+            overflow: hidden;
+            position: absolute;
+            width: 50.2%
+        }
+
+        .katex .halfarrow-right {
+            overflow: hidden;
+            position: absolute;
+            right: 0;
+            width: 50.2%
+        }
+
+        .katex .brace-left {
+            left: 0;
+            overflow: hidden;
+            position: absolute;
+            width: 25.1%
+        }
+
+        .katex .brace-center {
+            left: 25%;
+            overflow: hidden;
+            position: absolute;
+            width: 50%
+        }
+
+        .katex .brace-right {
+            overflow: hidden;
+            position: absolute;
+            right: 0;
+            width: 25.1%
+        }
+
+        .katex .x-arrow-pad {
+            padding: 0 .5em
+        }
+
+        .katex .cd-arrow-pad {
+            padding: 0 .55556em 0 .27778em
+        }
+
+        .katex .mover,
+        .katex .munder,
+        .katex .x-arrow {
+            text-align: center
+        }
+
+        .katex .boxpad {
+            padding: 0 .3em
+        }
+
+        .katex .fbox,
+        .katex .fcolorbox {
+            border: .04em solid;
+            box-sizing: border-box
+        }
+
+        .katex .cancel-pad {
+            padding: 0 .2em
+        }
+
+        .katex .cancel-lap {
+            margin-left: -.2em;
+            margin-right: -.2em
+        }
+
+        .katex .sout {
+            border-bottom-style: solid;
+            border-bottom-width: .08em
+        }
+
+        .katex .angl {
+            border-right: .049em solid;
+            border-top: .049em solid;
+            box-sizing: border-box;
+            margin-right: .03889em
+        }
+
+        .katex .anglpad {
+            padding: 0 .03889em
+        }
+
+        .katex .eqn-num:before {
+            content: "(" counter(katexEqnNo) ")";
+            counter-increment: katexEqnNo
+        }
+
+        .katex .mml-eqn-num:before {
+            content: "(" counter(mmlEqnNo) ")";
+            counter-increment: mmlEqnNo
+        }
+
+        .katex .mtr-glue {
+            width: 50%
+        }
+
+        .katex .cd-vert-arrow {
+            display: inline-block;
+            position: relative
+        }
+
+        .katex .cd-label-left {
+            display: inline-block;
+            position: absolute;
+            right: calc(50% + .3em);
+            text-align: left
+        }
+
+        .katex .cd-label-right {
+            display: inline-block;
+            left: calc(50% + .3em);
+            position: absolute;
+            text-align: right
+        }
+
+        .katex-display {
+            display: block;
+            margin: 1em 0;
+            text-align: center
+        }
+
+        .katex-display>.katex {
+            display: block;
+            text-align: center;
+            white-space: nowrap
+        }
+
+        .katex-display>.katex>.katex-html {
+            display: block;
+            position: relative
+        }
+
+        .katex-display>.katex>.katex-html>.tag {
+            position: absolute;
+            right: 0
+        }
+
+        .katex-display.leqno>.katex>.katex-html>.tag {
+            left: 0;
+            right: auto
+        }
+
+        .katex-display.fleqn>.katex {
+            padding-left: 2em;
+            text-align: left
+        }
+
+        body {
+            counter-reset: katexEqnNo mmlEqnNo
+        }
+    </style>
+    <style>
+        /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+        .katex-error {
+            color: var(--vscode-editorError-foreground);
+        }
+    </style>
+
 </head>
-<body>
-    <div class="row w-100">
-<div class="col-12 text-center">
-<h1 id="log-report">Log Report</h1>
-<p>A lightweight and efficient logging library for Node.js, designed for simplicity and flexibility.<br>
-This manual is also available in <a href="https://manuel-lohmus.github.io/log-report/README.html">HTML5</a>.</p>
-</div>
-</div> 
-<div class="row w-100">
-<div class="col-lg-3 d-lg-inline">
-<div class="sticky-top overflow-auto vh-lg-100">
-<div id="list-headers" class="list-group mt-2 ms-lg-2 ms-4">
-<h4 id="table-of-contents">Table of contents</h4>
-<ul>
-<li><a href="#introduction"><strong>Introduction</strong></a></li>
-<li><a href="#installation"><strong>Installation</strong></a></li>
-<li><a href="#basic-usage"><strong>Basic Usage</strong></a></li>
-<li><a href="#config-sets"><strong>Config Sets</strong></a></li>
-<li><a href="#license"><strong>License</strong></a></li>
-</ul>
-</div>
-</div>
-</div>
- 
-<div class="col-lg-9 mt-2">
-<div class="ps-4 markdown-body" data-bs-spy="scroll" data-bs-target="#list-headers" data-bs-offset="0" tabindex="0">
-<h2 id="introduction">Introduction</h2>
-<p>Log Report is a powerful yet simple tool designed to generate comprehensive reports of logs in a directory.<br />
-It helps analyze logs to identify errors, warnings, and other critical information, making it especially useful for applications running in multiple threads.<br />
-The tool is highly customizable, allowing you to tailor reports to your specific needs with ease.
-This module is part of the <a href="https://www.npmjs.com/package/conextra">'conextra'</a> framework,
-which is a simple and easy-to-use single-page application (SPA) framework.
-You have to try it! A different solution than MVC (model–view–controller).</p>
-<h2 id="installation">Installation</h2>
-<p>To install the Log Report, you can use the following command:</p>
-<pre><code class="language-bash">npm install log-report
+
+<body class="vscode-body vscode-light">
+    <div data-line="0" class="code-line" dir="auto"></div>
+    <p>
+        <img src="logo/logo-512x256.png" alt="log-report logo" width="440"
+            style="background-color:darkolivegreen;border-radius:1em;">
+    </p>
+    <h1 data-line="4" class="code-line" dir="auto" id="log-report" tabindex="-1">log-report</h1>
+    <p data-line="6" class="code-line" dir="auto">Lightweight Node.js logging with ECS-style fields, file rotation,
+        optional HTTP output, and zero-dependency runtime API.</p>
+    <h2 data-line="9" class="code-line" dir="auto" id="-table-of-contents" tabindex="-1">📚 Table of Contents</h2>
+    <ul data-line="11" class="code-line" dir="auto">
+        <li data-line="11" class="code-line" dir="auto"><a href="#-features" data-href="#-features">✨ Features</a></li>
+        <li data-line="12" class="code-line" dir="auto"><a href="#-installation" data-href="#-installation">📦
+                Installation</a></li>
+        <li data-line="13" class="code-line" dir="auto"><a href="#-quick-start" data-href="#-quick-start">🚀 Quick
+                start</a></li>
+        <li data-line="14" class="code-line" dir="auto"><a href="#️-configuration" data-href="#️-configuration">⚙️
+                Configuration</a></li>
+        <li data-line="15" class="code-line" dir="auto"><a href="#️output-formats" data-href="#️output-formats">🗺️
+                Output formats</a></li>
+        <li data-line="16" class="code-line" dir="auto"><a href="#-tracing-helpers" data-href="#-tracing-helpers">🧮
+                Tracing helpers</a></li>
+        <li data-line="17" class="code-line" dir="auto"><a href="#-http-output" data-href="#-http-output">🔃 HTTP
+                output</a></li>
+        <li data-line="18" class="code-line" dir="auto"><a href="#️-log-rotation-and-compression"
+                data-href="#️-log-rotation-and-compression">🗜️ Log rotation and compression</a></li>
+        <li data-line="19" class="code-line" dir="auto"><a href="#-exceptions" data-href="#-exceptions">❌ Exceptions</a>
+        </li>
+        <li data-line="20" class="code-line" dir="auto"><a href="#-typescript" data-href="#-typescript">📄
+                TypeScript</a></li>
+        <li data-line="21" class="code-line" dir="auto"><a href="#-examples" data-href="#-examples">📚 Examples</a></li>
+        <li data-line="22" class="code-line" dir="auto"><a href="#-tests" data-href="#-tests">🧪 Tests</a></li>
+        <li data-line="23" class="code-line" dir="auto"><a href="#-license" data-href="#-license">📜 License - MIT</a>
+        </li>
+    </ul>
+    <hr data-line="25" class="code-line" dir="auto">
+    <h2 data-line="27" class="code-line" dir="auto" id="-features" tabindex="-1">✨ Features</h2>
+    <ul data-line="29" class="code-line" dir="auto">
+        <li data-line="29" class="code-line" dir="auto">Zero dependencies, pure Node.js</li>
+        <li data-line="30" class="code-line" dir="auto">ECS-style fields (<code>@timestamp</code>,
+            <code>log.level</code>, <code>message</code>, <code>service.name</code>, etc.)</li>
+        <li data-line="31" class="code-line" dir="auto">JSON or text output (colorized in <code>dev</code> mode)</li>
+        <li data-line="32" class="code-line" dir="auto">File targets: stdout, stderr, exception</li>
+        <li data-line="33" class="code-line" dir="auto">Optional HTTP(S) POST per log (<code>outputUri</code>)</li>
+        <li data-line="34" class="code-line" dir="auto">Buffered appends + gzip rotation over ~1MB</li>
+        <li data-line="35" class="code-line" dir="auto">Config via live getters/setters (backed by
+            <code>config-sets</code>)</li>
+        <li data-line="36" class="code-line" dir="auto">Safe uncaughtException handler</li>
+    </ul>
+    <div data-line="38" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="40" class="code-line" dir="auto">
+    <h2 data-line="42" class="code-line" dir="auto" id="-installation" tabindex="-1">📦 Installation</h2>
+    <p data-line="44" class="code-line" dir="auto"><a href="https://www.npmjs.com/package/log-report"
+            data-href="https://www.npmjs.com/package/log-report">Available on npm</a></p>
+    <pre><code data-line="46" class="code-line language-bash" dir="auto">npm install log-report
 </code></pre>
-<h2 id="basic-usage">Basic Usage</h2>
-<p>Short usage example:</p>
-<pre><code class="language-javascript">/* short version */
-require('log-report');
-// Importing the 'log-report' module will automatically execute it in the current thread, 
-// saving the generated information.
+    <div data-line="50" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="52" class="code-line" dir="auto">
+    <h2 data-line="54" class="code-line" dir="auto" id="-quick-start" tabindex="-1">🚀 Quick start</h2>
+    <ol data-line="56" class="code-line" dir="auto">
+        <li data-line="56" class="code-line" dir="auto">Load the module (installs handlers based on settings)</li>
+    </ol>
+    <pre><code data-line="57" class="code-line language-js" dir="auto"><span class="hljs-keyword">const</span> createLogger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'log-report'</span>);
 </code></pre>
-<p>Longer example:</p>
-<pre><code class="language-javascript">/* longer version */
-const logReport = require('log-report');
-// Specifies the directory where logs will be saved.
-logReport.logDir = &quot;./log/log-report&quot;;
-// Specify appropriate log file names.
-logReport.stdoutFileName = &quot;stdout.log&quot;;
-logReport.stderrFileName = &quot;stderr.log&quot;;
-logReport.errorFileName = &quot;error.log&quot;;
-// This is useful if you want to start with fresh log files, especially during development or testing.
-logReport.clearOnStartup = false;
-// This is useful if you only want information about Uncaught Exception.
-logReport.saveOnlyUncaughtException = false;
-// This is useful if you want to get information about the PID of a process, especially during development or testing.
-logReport.addProcessTag = false;
-// This is useful if you want to get information about the file that started the process, especially during development or testing.
-logReport.addFileTag = false;
-// Suppresses terminal output when set to true.
-logReport.silent = true;
-// This is useful if you want to start with fresh log files, especially during development or testing.
-logReport.clearLogFiles();
+    <ol start="2" data-line="61" class="code-line" dir="auto">
+        <li data-line="61" class="code-line" dir="auto">Create a service logger</li>
+    </ol>
+    <pre><code data-line="62" class="code-line language-js" dir="auto"><span class="hljs-keyword">const</span> log = <span class="hljs-title function_">createLogger</span>(<span class="hljs-string">'app'</span>);
 </code></pre>
-<h2 id="config-sets">Config Sets</h2>
-<p>Config sets define the configuration for the log report and are located in the <code>config-sets.json</code> file in the root directory of the project.<br />
-They enable dynamic, real-time modification of settings. For example, setting <code>silent</code> to <code>true</code> suppresses terminal output.<br />
-Refer to the <a href="https://manuel-lohmus.github.io/config-sets/README.html">Config-Sets</a> section for detailed instructions on defining and using config sets.</p>
-<pre><code class="language-json">{
-  &quot;isProduction&quot;: true,
-  &quot;production&quot;: {
-    &quot;log_report&quot;: {
-      &quot;logDir&quot;: &quot;./log/log-report&quot;,
-      &quot;stdoutFileName&quot;: &quot;stdout.log&quot;,
-      &quot;stderrFileName&quot;: &quot;stderr.log&quot;,
-      &quot;errorFileName&quot;: &quot;error.log&quot;,
-      &quot;clearOnStartup&quot;: true,
-      &quot;saveOnlyUncaughtException&quot;: true,
-      &quot;addProcessTag&quot;: false,
-      &quot;addFileTag&quot;: false,
-      &quot;silent&quot;: false,
-      &quot;enabled&quot;: true
-    }
-  },
-  &quot;development&quot;: {}
-}
+    <ol start="3" data-line="66" class="code-line" dir="auto">
+        <li data-line="66" class="code-line" dir="auto">Emit logs</li>
+    </ol>
+    <pre><code data-line="67" class="code-line language-js" dir="auto">log.<span class="hljs-title function_">info</span>(<span class="hljs-string">'Application started'</span>, { <span class="hljs-attr">env</span>: process.<span class="hljs-property">env</span>.<span class="hljs-property">NODE_ENV</span> });
+log.<span class="hljs-title function_">debug</span>(<span class="hljs-string">'Cache primed'</span>, { <span class="hljs-attr">entries</span>: <span class="hljs-number">42</span> });
+log.<span class="hljs-title function_">warn</span>(<span class="hljs-string">'Disk space low'</span>, { <span class="hljs-attr">percentFree</span>: <span class="hljs-number">7</span> });
+log.<span class="hljs-title function_">error</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">'Something went wrong'</span>));
+log.<span class="hljs-title function_">trace</span>(<span class="hljs-string">'db.query'</span>, { <span class="hljs-attr">sql</span>: <span class="hljs-string">'SELECT 1'</span> });        <span class="hljs-comment">// visible in 'dev' or 'combined'</span>
+log.<span class="hljs-title function_">fatal</span>(<span class="hljs-string">'Cannot continue'</span>, { <span class="hljs-attr">code</span>: <span class="hljs-string">'E_FATAL'</span> }); <span class="hljs-comment">// also goes to exception log</span>
 </code></pre>
-<h2 id="license">License</h2>
-<p>This project is licensed under the MIT License.</p>
-<p>Copyright © Manuel Lõhmus</p>
-<br>
-<br>
-<br>
-</div>
-</div>
-</div>
-
-    <script>
-        (function () {
-
-            'use strict';
-
-            var isIE = !!document.documentMode; // Detect IE
-
-            if (!isIE) {
-
-                // list-group style for headers
-                document.querySelectorAll('#list-headers a')
-                    .forEach(function (a) { a.classList.add('list-group-item', 'list-group-item-action') });
-            }
-        })();
-    </script>
+    <ol start="4" data-line="76" class="code-line" dir="auto">
+        <li data-line="76" class="code-line" dir="auto">(Optional) Clear log files on startup</li>
+    </ol>
+    <pre><code data-line="77" class="code-line language-js" dir="auto">createLogger.<span class="hljs-title function_">clearLogFiles</span>();
+</code></pre>
+    <div data-line="81" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="83" class="code-line" dir="auto">
+    <h2 data-line="85" class="code-line" dir="auto" id="️-configuration" tabindex="-1">⚙️ Configuration</h2>
+    <p data-line="87" class="code-line" dir="auto">Possibilitys:</p>
+    <ol data-line="88" class="code-line" dir="auto">
+        <li data-line="88" class="code-line" dir="auto">Create a logger instance with options:</li>
+    </ol>
+    <pre><code data-line="90" class="code-line language-js" dir="auto"><span class="hljs-keyword">const</span> createLogger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'log-report'</span>);
+<span class="hljs-keyword">const</span> log = <span class="hljs-title function_">createLogger</span>(<span class="hljs-string">'payments'</span>, {
+    <span class="hljs-attr">logMode</span>: <span class="hljs-string">'dev'</span>,                         <span class="hljs-comment">// includes dev-style logs so trace is visible</span>
+    <span class="hljs-attr">outputJSON</span>: <span class="hljs-literal">false</span>,                      <span class="hljs-comment">// human-readable text mode</span>
+    <span class="hljs-attr">baseFields</span>: {
+        <span class="hljs-string">'ECS.version'</span>: <span class="hljs-string">'1.12.0'</span>,            <span class="hljs-comment">// ECS version</span>
+        <span class="hljs-attr">service</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">'payment-service'</span> }<span class="hljs-comment">// ECS service.name</span>
+    },
+    <span class="hljs-attr">saveOnlyUncaughtException</span>: <span class="hljs-literal">false</span>,       <span class="hljs-comment">// enable stdout/stderr hooks</span>
+    <span class="hljs-attr">logDir</span>: <span class="hljs-string">'./logs/log-report'</span>,
+    <span class="hljs-attr">clearOnStartup</span>: <span class="hljs-literal">true</span>,                   <span class="hljs-comment">// start clean</span>
+    <span class="hljs-attr">addProcessTag</span>: <span class="hljs-literal">true</span>,                    <span class="hljs-comment">// adds process.pid</span>
+    <span class="hljs-attr">addFileTag</span>: <span class="hljs-literal">true</span>,                       <span class="hljs-comment">// adds log.origin.file.name</span>
+    <span class="hljs-attr">silent</span>: <span class="hljs-literal">false</span>                           <span class="hljs-comment">// also print to console</span>
+});
+<span class="hljs-comment">// Example logs</span>
+log.<span class="hljs-title function_">info</span>(<span class="hljs-string">'Payment service started'</span>);
+log.<span class="hljs-title function_">trace</span>(<span class="hljs-string">'db.query'</span>, { <span class="hljs-attr">sql</span>: <span class="hljs-string">'SELECT * FROM orders'</span> });
+log.<span class="hljs-title function_">error</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">'Database connection failed'</span>));
+log.<span class="hljs-title function_">fatal</span>(<span class="hljs-string">'Cannot continue'</span>, { <span class="hljs-attr">code</span>: <span class="hljs-string">'E_FATAL'</span> });
+log.<span class="hljs-title function_">trace</span>(<span class="hljs-string">'user.login'</span>, { <span class="hljs-attr">userId</span>: <span class="hljs-number">12345</span>, <span class="hljs-attr">traceId</span>: <span class="hljs-string">'abcde12345'</span> }); <span class="hljs-comment">// trace helper</span>
+log.<span class="hljs-title function_">trace</span>(<span class="hljs-string">'cache.miss'</span>, <span class="hljs-string">'Cache miss for user 12345'</span>, { <span class="hljs-attr">key</span>: <span class="hljs-string">'user_12345'</span> }); <span class="hljs-comment">// with value</span>
+</code></pre>
+    <ol start="2" data-line="115" class="code-line" dir="auto">
+        <li data-line="115" class="code-line" dir="auto">Use default settings and modify as needed:</li>
+    </ol>
+    <pre><code data-line="117" class="code-line language-js" dir="auto"><span class="hljs-keyword">const</span> createLogger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'log-report'</span>);
+<span class="hljs-keyword">const</span> log = <span class="hljs-title function_">createLogger</span>(<span class="hljs-string">'app'</span>); <span class="hljs-comment">// uses default settings</span>
+log.<span class="hljs-title function_">info</span>(<span class="hljs-string">'App started'</span>);
+</code></pre>
+    <ol start="3" data-line="123" class="code-line" dir="auto">
+        <li data-line="123" class="code-line" dir="auto">Settings are runtime getters/setters on the exported function:
+        </li>
+    </ol>
+    <pre><code data-line="125" class="code-line language-js" dir="auto"><span class="hljs-keyword">const</span> logReport = <span class="hljs-built_in">require</span>(<span class="hljs-string">'log-report'</span>);
+<span class="hljs-comment">// Modes: 'none' | 'short' | 'dev' | 'combined' </span>
+logReport.<span class="hljs-property">logMode</span> = <span class="hljs-string">'dev'</span>;
+logReport.<span class="hljs-property">outputJSON</span> = <span class="hljs-literal">true</span>;                  <span class="hljs-comment">// JSON vs text </span>
+logReport.<span class="hljs-property">outputUri</span> = <span class="hljs-string">'http://localhost:5985/log-report'</span>; <span class="hljs-comment">// optional HTTP endpoint </span>
+logReport.<span class="hljs-property">logDir</span> = <span class="hljs-string">'./logs/log-report'</span>;
+logReport.<span class="hljs-property">stdoutFileName</span> = <span class="hljs-string">'stdout.log'</span>; 
+logReport.<span class="hljs-property">stderrFileName</span> = <span class="hljs-string">'stderr.log'</span>; 
+logReport.<span class="hljs-property">exceptionFileName</span> = <span class="hljs-string">'exception.log'</span>;
+logReport.<span class="hljs-property">clearOnStartup</span> = <span class="hljs-literal">true</span>; 
+logReport.<span class="hljs-property">saveOnlyUncaughtException</span> = <span class="hljs-literal">false</span>;  <span class="hljs-comment">// if true, stdout/stderr hooks are not attached </span>
+logReport.<span class="hljs-property">addProcessTag</span> = <span class="hljs-literal">true</span>; 
+logReport.<span class="hljs-property">addFileTag</span> = <span class="hljs-literal">true</span>; 
+logReport.<span class="hljs-property">silent</span> = <span class="hljs-literal">false</span>;                     <span class="hljs-comment">// print to console </span>
+logReport.<span class="hljs-property">loggingEnabled</span> = <span class="hljs-literal">true</span>;              <span class="hljs-comment">// file logging on/off </span>
+logReport.<span class="hljs-property">compressEnabled</span> = <span class="hljs-literal">true</span>;             <span class="hljs-comment">// gzip rotation over ~1MB</span>
+<span class="hljs-comment">// Utility </span>
+logReport.<span class="hljs-title function_">clearLogFiles</span>();
+</code></pre>
+    <ol start="4" data-line="146" class="code-line" dir="auto">
+        <li data-line="146" class="code-line" dir="auto">Loggers can also be created with config sets
+            (config-sets.json):</li>
+    </ol>
+    <p data-line="148" class="code-line" dir="auto">Install <code>config-sets</code>:</p>
+    <pre><code data-line="149" class="code-line language-bash" dir="auto">npm install config-sets
+</code></pre>
+    <p data-line="153" class="code-line" dir="auto">Then use in your app:</p>
+    <pre><code data-line="154" class="code-line language-js" dir="auto"><span class="hljs-keyword">const</span> configSets = <span class="hljs-built_in">require</span>(<span class="hljs-string">'config-sets'</span>);
+<span class="hljs-keyword">const</span> createLogger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'log-report'</span>);
+<span class="hljs-keyword">const</span> log = <span class="hljs-title function_">createLogger</span>(<span class="hljs-string">'orders'</span>, <span class="hljs-title function_">configSets</span>(<span class="hljs-string">'log-report'</span>));
+<span class="hljs-comment">// Example logs</span>
+log.<span class="hljs-title function_">info</span>(<span class="hljs-string">'Order service started'</span>);
+log.<span class="hljs-title function_">trace</span>(<span class="hljs-string">'db.query'</span>, { <span class="hljs-attr">sql</span>: <span class="hljs-string">'SELECT * FROM orders'</span> });
+log.<span class="hljs-title function_">error</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">'Database connection failed'</span>));
+log.<span class="hljs-title function_">fatal</span>(<span class="hljs-string">'Cannot continue'</span>, { <span class="hljs-attr">code</span>: <span class="hljs-string">'E_FATAL'</span> });
+log.<span class="hljs-title function_">trace</span>(<span class="hljs-string">'user.login'</span>, { <span class="hljs-attr">userId</span>: <span class="hljs-number">12345</span>, <span class="hljs-attr">traceId</span>: <span class="hljs-string">'abcde12345'</span> }); <span class="hljs-comment">// trace helper</span>
+log.<span class="hljs-title function_">trace</span>(<span class="hljs-string">'cache.miss'</span>, <span class="hljs-string">'Cache miss for user 12345'</span>, { <span class="hljs-attr">key</span>: <span class="hljs-string">'user_12345'</span> }); <span class="hljs-comment">// with value</span>
+</code></pre>
+    <p data-line="167" class="code-line" dir="auto">Tip: values also integrate with <code>config-sets</code>
+        (config-sets.json) under the <code>log-report</code> key.</p>
+    <p data-line="169" class="code-line" dir="auto">Example config-sets.json:</p>
+    <pre><code data-line="170" class="code-line language-json" dir="auto"><span class="hljs-punctuation">{</span>
+  <span class="hljs-comment">/* Set to true to use production settings, */</span>
+  <span class="hljs-comment">/* false for development settings. Default is true. */</span>
+  <span class="hljs-attr">"isProduction"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-comment">/* Settings used in production mode. */</span>
+  <span class="hljs-comment">/* These settings are saved to "config-sets.json" file. */</span>
+  <span class="hljs-attr">"production"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-comment">/* 'log-report' settings */</span>
+    <span class="hljs-attr">"log-report"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-comment">/* Log mode. Default: 'short' */</span>
+      <span class="hljs-comment">/* Example values: 'none', 'short', 'dev', 'combined' */</span>
+      <span class="hljs-comment">/* 'none' = disable all logging except uncaughtException to exception.log */</span>
+      <span class="hljs-comment">/* 'short' = info, warn, error, fatal to respective files (stdout.log, stderr.log, exception.log) */</span>
+      <span class="hljs-comment">/* 'dev' = like 'short' but also includes debug and trace to stdout.log (for development) */</span>
+      <span class="hljs-comment">/* 'combined' = like 'dev' but also includes http info (if provided in log.trace) to stdout (logs all) */</span>
+      <span class="hljs-comment">/* 'dev' and 'combined' are verbose and may include sensitive information, use with caution in production. */</span>
+      <span class="hljs-attr">"logMode"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"short"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* Output format. Default: true (true = JSON format, false = text format) */</span>
+      <span class="hljs-comment">/* If false, the output format will be a human-readable text format. */</span>
+      <span class="hljs-comment">/* This is useful for development or debugging, but not recommended for production. */</span>
+      <span class="hljs-attr">"outputJSON"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"baseFields"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* Output URI. Default: '' (e.g. 'http://localhost:3000/logs') */</span>
+      <span class="hljs-comment">/* If set, logs will be sent to the specified URI via HTTP POST in JSON format. */</span>
+      <span class="hljs-comment">/* Ensure that the URI is reachable and can accept POST requests with JSON payloads. */</span>
+      <span class="hljs-comment">/* If empty, logs will only be written to log files. */</span>
+      <span class="hljs-attr">"outputUri"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">""</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* Specifies the directory where logs will be saved. Default: './logs/log-report' */</span>
+      <span class="hljs-comment">/* Ensure that the directory exists or the application has permission to create it. */</span>
+      <span class="hljs-comment">/* Relative paths are resolved against the current working directory. */</span>
+      <span class="hljs-comment">/* Absolute paths are used as-is. (e.g. '/var/log/myapp') */</span>
+      <span class="hljs-attr">"logDir"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"./logs/log-report"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* Specify appropriate log file names. Default: 'stdout.log' */</span>
+      <span class="hljs-attr">"stdoutFileName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"stdout.log"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* Specify appropriate log file names. Default: 'stderr.log' */</span>
+      <span class="hljs-attr">"stderrFileName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"stderr.log"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* Specify appropriate log file names. Default: 'exception.log' */</span>
+      <span class="hljs-attr">"exceptionFileName"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"exception.log"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* This is useful if you want to start with fresh log files, */</span>
+      <span class="hljs-comment">/* especially during development or testing. Default: true */</span>
+      <span class="hljs-attr">"clearOnStartup"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* This is useful if you only want information about Uncaught Exception. Default: false */</span>
+      <span class="hljs-attr">"saveOnlyUncaughtException"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* This is useful if you want to get information about the PID of a process, */</span>
+      <span class="hljs-comment">/* especially during development or testing. Default: false */</span>
+      <span class="hljs-comment">/* Note: In clustered environments, multiple processes may write to the same log file. */</span>
+      <span class="hljs-comment">/* Consider using 'addFileTag' for better traceability. */</span>
+      <span class="hljs-attr">"addProcessTag"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* This is useful if you want to get information about the file that started the process, */</span>
+      <span class="hljs-comment">/* especially during development or testing. Default: false */</span>
+      <span class="hljs-comment">/* Note: In clustered environments, multiple processes may write to the same log file. */</span>
+      <span class="hljs-comment">/* This adds the 'log.origin.file.name' field to each log entry. */</span>
+      <span class="hljs-attr">"addFileTag"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* Suppresses terminal output when set to true. Default: false */</span>
+      <span class="hljs-comment">/* When false, log messages will be printed to the console in addition to being saved to log files. */</span>
+      <span class="hljs-comment">/* When true, log messages will only be saved to log files. */</span>
+      <span class="hljs-attr">"silent"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* Enable or disable logging. Default: true */</span>
+      <span class="hljs-comment">/* When false, no logs will be written to files, but uncaught exceptions will still be handled. */</span>
+      <span class="hljs-comment">/* This can be useful for temporarily disabling logging without changing other settings. */</span>
+      <span class="hljs-attr">"loggingEnabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-comment">/* Enable or disable gzip rotation over 1MB. Default: true */</span>
+      <span class="hljs-comment">/* When true, log files exceeding 1MB will be compressed using gzip to save disk space. */</span>
+      <span class="hljs-comment">/* When false, log files will grow indefinitely unless manually managed. */</span>
+      <span class="hljs-attr">"compressEnabled"</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-comment">/* Settings used in development mode. */</span>
+  <span class="hljs-comment">/* These settings are not saved to file and are created from production settings. */</span>
+  <span class="hljs-comment">/* You can override these settings using command line arguments. */</span>
+  <span class="hljs-comment">/* Set only the settings you want to change. */</span>
+  <span class="hljs-attr">"development"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+    <div data-line="246" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="248" class="code-line" dir="auto">
+    <h2 data-line="250" class="code-line" dir="auto" id="️output-formats" tabindex="-1">🗺️Output formats</h2>
+    <p data-line="252" class="code-line" dir="auto">Two formats are supported:</p>
+    <ul data-line="253" class="code-line" dir="auto">
+        <li data-line="253" class="code-line" dir="auto">JSON (default): single-line ECS-style objects suitable for
+            ingestion.</li>
+        <li data-line="254" class="code-line" dir="auto">Text: human readable. In <code>dev</code> mode, text is
+            colorized and includes key=value pairs.</li>
+    </ul>
+    <p data-line="256" class="code-line" dir="auto">Example JSON (abbreviated):</p>
+    <pre><code data-line="257" class="code-line language-json" dir="auto"><span class="hljs-punctuation">{</span> <span class="hljs-attr">"@timestamp"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2025-01-01T12:00:00.000Z"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"service.name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"app"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"log.logger"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"app"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"log.level"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"info"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"message"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Application started"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"event.kind"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"event"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"event.dataset"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"app.stdout"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"labels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"env"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"production"</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">}</span>
+</code></pre>
+    <p data-line="260" class="code-line" dir="auto">Example text (abbreviated):</p>
+    <pre><code data-line="261" class="code-line language-bash" dir="auto">[2025-01-01T12:00:00.000Z] [info] Application started <span class="hljs-built_in">env</span>=production
+[2025-01-01T12:00:01.000Z] [debug] Cache primed entries=42
+[2025-01-01T12:00:02.000Z] [warn] Disk space low percentFree=7
+[2025-01-01T12:00:03.000Z] [error] Something went wrong Error: Something went wrong
+    at Object.&lt;anonymous&gt; (/path/to/file.js:10:15)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    ...
+[2025-01-01T12:00:04.000Z] [trace] db.query sql=SELECT 1
+[2025-01-01T12:00:05.000Z] [fatal] Cannot <span class="hljs-built_in">continue</span> code=E_FATAL
+[2025-01-01T12:00:06.000Z] [trace] user.login trace.id=abcde12345 userId=12345
+[2025-01-01T12:00:07.000Z] [trace] cache.miss Cache miss <span class="hljs-keyword">for</span> user 12345 key=user_12345
+</code></pre>
+    <div data-line="275" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="277" class="code-line" dir="auto">
+    <h2 data-line="279" class="code-line" dir="auto" id="-tracing-helpers" tabindex="-1">🧮 Tracing helpers</h2>
+    <p data-line="281" class="code-line" dir="auto">The
+        <code>trace()</code> promotes common IDs to ECS fields:
+    </p>
+    <ul data-line="283" class="code-line" dir="auto">
+        <li data-line="283" class="code-line" dir="auto"><code>trace.id</code> from <code>objKV.traceId</code> or
+            <code>objKV['trace.id']</code></li>
+        <li data-line="284" class="code-line" dir="auto"><code>span.id</code> from <code>objKV.spanId</code> or
+            <code>objKV['span.id']</code></li>
+        <li data-line="285" class="code-line" dir="auto"><code>transaction.id</code> from
+            <code>objKV.transactionId</code> or <code>objKV['transaction.id']</code></li>
+    </ul>
+    <p data-line="287" class="code-line" dir="auto">Remaining key/values are placed under <code>labels.*</code>. If a
+        <code>value</code> argument is provided, it appears as <code>labels.value</code>.
+        Example:</p>
+    <pre><code data-line="289" class="code-line language-js" dir="auto">log.<span class="hljs-title function_">trace</span>(<span class="hljs-string">'user.login'</span>, { <span class="hljs-attr">userId</span>: <span class="hljs-number">12345</span>, <span class="hljs-attr">traceId</span>: <span class="hljs-string">'abcde12345'</span> }); <span class="hljs-comment">// traceId becomes trace.id</span>
+log.<span class="hljs-title function_">trace</span>(<span class="hljs-string">'cache.miss'</span>, { <span class="hljs-attr">key</span>: <span class="hljs-string">'user_12345'</span> }, <span class="hljs-string">'Cache miss for user 12345'</span>); <span class="hljs-comment">// with value</span>
+</code></pre>
+    <div data-line="294" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="296" class="code-line" dir="auto">
+    <h2 data-line="298" class="code-line" dir="auto" id="-http-output" tabindex="-1">🔃 HTTP output</h2>
+    <p data-line="300" class="code-line" dir="auto">If <code>outputUri</code> is set, logs are sent as JSON via HTTP
+        POST. File and console outputs still apply unless disabled.</p>
+    <p data-line="302" class="code-line" dir="auto">When <code>outputUri</code> is set, each log is POSTed to the
+        endpoint as JSON. File and console outputs still apply unless disabled.</p>
+    <p data-line="304" class="code-line" dir="auto">Example HTTP payload:</p>
+    <pre><code data-line="305" class="code-line language-json" dir="auto"><span class="hljs-punctuation">{</span> <span class="hljs-attr">"@timestamp"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2025-01-01T12:00:00.000Z"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"service.name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"app"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"log.logger"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"app"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"log.level"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"info"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"message"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Application started"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"event.kind"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"event"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"event.dataset"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"app.stdout"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"labels"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">"env"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"production"</span> <span class="hljs-punctuation">}</span> <span class="hljs-punctuation">}</span>
+</code></pre>
+    <div data-line="309" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="311" class="code-line" dir="auto">
+    <h2 data-line="313" class="code-line" dir="auto" id="️-log-rotation-and-compression" tabindex="-1">🗜️ Log rotation
+        and compression</h2>
+    <p data-line="315" class="code-line" dir="auto">Logs are buffered and flushed every second or when the buffer
+        exceeds 1KB. When a log file exceeds ~1MB, it is rotated and compressed with gzip (if
+        <code>compressEnabled</code> is <code>true</code>).</p>
+    <div data-line="317" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="319" class="code-line" dir="auto">
+    <h2 data-line="321" class="code-line" dir="auto" id="-exceptions" tabindex="-1">❌ Exceptions</h2>
+    <p data-line="323" class="code-line" dir="auto">Uncaught exceptions are logged to <code>exception.log</code> and the
+        process exits. If <code>saveOnlyUncaughtException</code> is <code>true</code>, only uncaught exceptions are
+        recorded (stdout/stderr hooks are not attached).</p>
+    <div data-line="325" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="327" class="code-line" dir="auto">
+    <h2 data-line="329" class="code-line" dir="auto" id="-typescript" tabindex="-1">📄 TypeScript</h2>
+    <p data-line="331" class="code-line" dir="auto">Type definitions are included. If using TypeScript, import as below.
+        Ensure your <code>tsconfig.json</code> has <code>"esModuleInterop": true</code> or use
+        <code>import * as createLogger from 'log-report'</code> if not.</p>
+    <p data-line="333" class="code-line" dir="auto"><code>index.d.ts</code> is included.</p>
+    <pre><code data-line="334" class="code-line language-ts" dir="auto"><span class="hljs-keyword">import</span> createLogger <span class="hljs-keyword">from</span> <span class="hljs-string">'log-report'</span>;
+<span class="hljs-keyword">const</span> log = <span class="hljs-title function_">createLogger</span>(<span class="hljs-string">'api'</span>);
+log.<span class="hljs-title function_">info</span>(<span class="hljs-string">'ready'</span>);
+</code></pre>
+    <div data-line="340" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="342" class="code-line" dir="auto">
+    <h2 data-line="344" class="code-line" dir="auto" id="-examples" tabindex="-1">📚 Examples</h2>
+    <p data-line="346" class="code-line" dir="auto">See <code>examples/</code>:</p>
+    <ul data-line="347" class="code-line" dir="auto">
+        <li data-line="347" class="code-line" dir="auto"><code>basic-ecs-json.js</code>: JSON output</li>
+        <li data-line="348" class="code-line" dir="auto"><code>dev-trace-text.js</code>: dev mode with trace and text
+            output</li>
+        <li data-line="349" class="code-line" dir="auto"><code>http-output.js</code>: send logs to HTTP endpoint</li>
+        <li data-line="350" class="code-line" dir="auto"><code>rotate-compress.js</code>: file rotation and gzip</li>
+    </ul>
+    <div data-line="352" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="354" class="code-line" dir="auto">
+    <h2 data-line="356" class="code-line" dir="auto" id="-tests" tabindex="-1">🧪 Tests</h2>
+    <p data-line="358" class="code-line" dir="auto">Project includes tests using <a
+            href="https://www.npmjs.com/package/test-runner-lite"
+            data-href="https://www.npmjs.com/package/test-runner-lite">test-runner-lite</a>. No additional setup is
+        needed.
+        Use test-runner-lite (or Node directly) to run tests.</p>
+    <p data-line="361" class="code-line" dir="auto">Run all tests:</p>
+    <pre><code data-line="363" class="code-line language-bash" dir="auto">npm <span class="hljs-built_in">test</span>
+</code></pre>
+    <p data-line="367" class="code-line" dir="auto">Run the test directly:</p>
+    <pre><code data-line="369" class="code-line language-bash" dir="auto">node ./index.test.js
+</code></pre>
+    <div data-line="373" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="375" class="code-line" dir="auto">
+    <h2 data-line="377" class="code-line" dir="auto" id="-license" tabindex="-1">📜 License</h2>
+    <p data-line="379" class="code-line" dir="auto">This project is licensed under the MIT License.<br>
+        Copyright © Manuel Lõhmus</p>
+    <div data-line="382" class="code-line" dir="auto"></div>
+    <p align="right"><a href="#log-report">Back to top ↑</a></p>
+    <hr data-line="384" class="code-line" dir="auto">
 </body>
+
 </html>

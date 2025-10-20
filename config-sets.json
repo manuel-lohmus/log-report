@@ -1,18 +1,88 @@
+/* Configuration settings for application. */
 {
+  /* Set to true to use production settings, */
+  /* false for development settings. Default is true. */
   "isProduction": true,
+  /* Settings used in production mode. */
+  /* These settings are saved to "config-sets.json" file. */
   "production": {
-    "log_report": {
-      "logDir": "./log/log-report",
+    /* 'module:log-report' settings */
+    /* These settings configure the logging behavior of the application. */
+    /* Changes are applied in real time when new settings are saved to file. */
+    "module:log-report": {
+      /* Log mode. Default: 'short' */
+      /* Example values: 'none', 'short', 'dev', 'combined' */
+      /* 'none' = disable all logging except uncaughtException to exception.log */
+      /* 'short' = info, warn, error, fatal to respective files (stdout.log, stderr.log, exception.log) */
+      /* 'dev' = like 'short' but also includes debug and trace to stdout.log (for development) */
+      /* 'combined' = like 'dev' but also includes http info (if provided in log.trace) to stdout (logs all) */
+      /* 'dev' and 'combined' are verbose and may include sensitive information, use with caution in production. */
+      "logMode": "short",
+      /* Output format. Default: true (true = JSON format, false = text format) */
+      /* If false, the output format will be a human-readable text format. */
+      /* This is useful for development or debugging, but not recommended for production. */
+      "outputJSON": true,
+      "baseFields": {},
+      /* Output URI. Default: '' (e.g. 'http://localhost:3000/logs') */
+      /* If set, logs will be sent to the specified URI via HTTP POST in JSON format. */
+      /* Ensure that the URI is reachable and can accept POST requests with JSON payloads. */
+      /* If empty, logs will only be written to log files. */
+      "outputUri": "",
+      /* Specifies the directory where logs will be saved. Default: './logs/log-report' */
+      /* Ensure that the directory exists or the application has permission to create it. */
+      /* Relative paths are resolved against the current working directory. */
+      /* Absolute paths are used as-is. (e.g. '/var/log/myapp') */
+      "logDir": "./logs/log-report",
+      /* Specify appropriate log file names. Default: 'stdout.log' */
       "stdoutFileName": "stdout.log",
+      /* Specify appropriate log file names. Default: 'stderr.log' */
       "stderrFileName": "stderr.log",
-      "errorFileName": "error.log",
-      "clearOnStartup": false,
+      /* Specify appropriate log file names. Default: 'exception.log' */
+      "exceptionFileName": "exception.log",
+      /* This is useful if you want to start with fresh log files, */
+      /* especially during development or testing. Default: true */
+      "clearOnStartup": true,
+      /* This is useful if you only want information about Uncaught Exception. Default: false */
+      "saveOnlyUncaughtException": true,
+      /* This is useful if you want to get information about the PID of a process, */
+      /* especially during development or testing. Default: false */
+      /* Note: In clustered environments, multiple processes may write to the same log file. */
+      /* Consider using 'addFileTag' for better traceability. */
+      "addProcessTag": false,
+      /* This is useful if you want to get information about the file that started the process, */
+      /* especially during development or testing. Default: false */
+      /* Note: In clustered environments, multiple processes may write to the same log file. */
+      /* This adds the 'log.origin.file.name' field to each log entry. */
+      "addFileTag": false,
+      /* Suppresses terminal output when set to true. Default: false */
+      /* When false, log messages will be printed to the console in addition to being saved to log files. */
+      /* When true, log messages will only be saved to log files. */
+      "silent": false,
+      /* Enable or disable logging. Default: true */
+      /* When false, no logs will be written to files, but uncaught exceptions will still be handled. */
+      /* This can be useful for temporarily disabling logging without changing other settings. */
+      "loggingEnabled": true,
+      /* Enable or disable gzip rotation over 1MB. Default: true */
+      /* When true, log files exceeding 1MB will be compressed using gzip to save disk space. */
+      /* When false, log files will grow indefinitely unless manually managed. */
+      "compressEnabled": true
+    }
+  },
+  /* Settings used in development mode. */
+  /* These settings are not saved to file and are created from production settings. */
+  /* You can override these settings using command line arguments. */
+  /* Set only the settings you want to change. */
+  "development": {
+    "module:log-report": {
+      "logMode": "dev",
+      "outputJSON": false,
+      "clearOnStartup": true,
       "saveOnlyUncaughtException": false,
       "addProcessTag": true,
       "addFileTag": true,
       "silent": false,
-      "enabled": true
+      "loggingEnabled": true,
+      "compressEnabled": false
     }
-  },
-  "development": {}
+  }
 }

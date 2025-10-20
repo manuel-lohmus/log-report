@@ -7,7 +7,11 @@
       "name": "Launch Program",
       "skipFiles": [ "<node_internals>/**" ],
       //"program": "${workspaceFolder}/index.js",
-      "program": "${workspaceFolder}/test.js",
+      //"program": "${workspaceFolder}/index.test.js",
+      "program": "${workspaceFolder}/examples/basic-ecs-json.js",
+      //"program": "${workspaceFolder}/examples/dev-trace-text.js",
+      //"program": "${workspaceFolder}/examples/http-output.js",
+      //"program": "${workspaceFolder}/examples/rotate-compress.js",
       "cwd": "${workspaceFolder}",
       "console": "externalTerminal"
     }

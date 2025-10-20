@@ -1,9 +1,9 @@
 {
   "name": "log-report",
-  "version": "3.0.0-rc.1",
+  "version": "3.0.0",
   "license": "MIT",
   "author": "Manuel Lõhmus",
-  "description": "A lightweight and efficient logging library for Node.js, designed for simplicity and flexibility.",
+  "description": "Log reporting tool for capturing and reporting logs, errors, and warnings to stdout and stderr.",
   "keywords": [
     "conextra",
     "log",
@@ -16,9 +16,10 @@
     "log-reporting-tool"
   ],
   "browser": "browser.js",
+  "types": "index.d.ts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.test.js"
   },
   "module": "wrapper.mjs",
   "exports": {
@@ -30,16 +31,17 @@
     "./package.json": "./package.json"
   },
   "files": [
+    "logo/logo-512x256.png",
     "browser.js",
+    "index.d.ts",
     "index.js",
+    "index.test.js",
     "LICENSE",
     "package.json",
     "README.md",
+    "testRunner.js",
     "wrapper.mjs"
   ],
-  "dependencies": {
-    "config-sets": "^3.0.0-rc.1"
-  },
   "homepage": "https://github.com/manuel-lohmus/log-report#readme",
   "bugs": "https://github.com/manuel-lohmus/log-report/issues",
   "repository": {

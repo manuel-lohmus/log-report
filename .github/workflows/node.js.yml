@@ -1,0 +1,79 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "master", "main" ]
+    tags: [ "v*.*.*" ]
+  pull_request:
+    branches: [ "master", "main" ]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test on Node ${{ matrix.node-version }} • ubuntu-latest
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [ 18.x, 20.x, 22.x ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install (lockfile)
+        if: hashFiles('**/package-lock.json') != ''
+        run: npm ci --no-audit --no-fund
+
+      - name: Install
+        if: hashFiles('**/package-lock.json') == ''
+        run: npm install --no-audit --no-fund
+
+      - name: Run tests
+        run: npm test
+
+  release:
+    name: Release v3.x (tag)
+    needs: [ test ]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (publish)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          registry-url: https://registry.npmjs.org
+          cache: npm
+
+      - name: Install (production)
+        run: npm ci --omit=dev --no-audit --no-fund || npm install --omit=dev --no-audit --no-fund
+
+      - name: Pack artifact
+        run: npm pack
+      
+      - name: Publish to npm
+        if: secrets.NPM_TOKEN != ''
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            *.tgz

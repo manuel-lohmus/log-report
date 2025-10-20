@@ -1,0 +1,41 @@
+name: Feature request
+description: Propose an idea for log-report
+title: "[Feature]: "
+labels: ["enhancement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for suggesting an improvement!"
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem would this feature solve?
+      placeholder: "When using outputUri with high throughput, I need batching..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the solution you'd like
+      placeholder: "Add a batch queue with size/time thresholds before POSTing..."
+    validations:
+      required: true
+  - type: textarea
+    id: api
+    attributes:
+      label: API / Configuration
+      description: Any new options, defaults, or breaking changes?
+      placeholder: "logReport.outputBatchEnabled (default false), outputBatchSize, outputBatchInterval..."
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      placeholder: "External queue, reverse proxy buffering..."
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      placeholder: "Links, references, mockups, or pseudo-code"

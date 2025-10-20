@@ -1,3 +1,9 @@
 <Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2191419">
-
+  <ItemGroup>
+    <None Include=".github\ISSUE_TEMPLATE\bug_report.yml" />
+    <None Include=".github\ISSUE_TEMPLATE\config.yml" />
+    <None Include=".github\ISSUE_TEMPLATE\feature_request.yml" />
+    <None Include=".github\ISSUE_TEMPLATE\question.yml" />
+    <None Include=".github\workflows\node.js.yml" />
+  </ItemGroup>
 </Project>
